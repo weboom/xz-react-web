@@ -1,11 +1,14 @@
 import * as React from 'react';
 import apis from '../../apis';
 import './index.css';
-import { menuList } from './menu.config';
+import Carousel from 'antd-mobile/lib/carousel';
+import { menuList, sliderList, itemList } from './menu.config';
 
 export default class Welcome extends React.Component {
   public state = {
-    list: []
+    list: [],
+    data: ['1', '2', '3', '4'],
+    imgHeight: 176,
   }
 
   public componentDidMount () {
@@ -17,6 +20,11 @@ export default class Welcome extends React.Component {
         })
       }
     })
+    setTimeout(() => {
+      this.setState({
+        data: sliderList
+      });
+    }, 100);
   }
 
   public renderList = () => {
@@ -67,6 +75,49 @@ export default class Welcome extends React.Component {
     return (
       <div className="mod-main-adver">
         <div className="slider-bg" />
+        <div className="slider-list">
+          <Carousel autoplay={false} infinite cellSpacing={10}>
+            {this.state.data.map(val => (
+              <a
+                key={val}
+                href="http://www.alipay.com"
+                style={{
+                  display: 'inline-block',
+                  width: '100%',
+                  height: this.state.imgHeight
+                }}
+              >
+                <img
+                  src={val}
+                  alt=""
+                  style={{ width: '100%', verticalAlign: 'top' }}
+                />
+              </a>
+            ))}
+          </Carousel>
+        </div>
+      </div>
+    )
+  }
+
+  public renderItemList = () => {
+    return (
+      <div className="g-list">
+          {
+            itemList.map((item, index) => {
+              return (
+                <div className="g-item" key={index}>
+                  <div className="g-logo-wrap">
+                    <img src={item.imgs[0]} alt=""/>
+                  </div>
+                  <div className="g-item-name">
+                    <div>{ item.name }</div>
+                  </div>
+                  <div className="g-item-price">¥{+item.price / 100}</div>
+                </div>
+              )
+            })
+          }
       </div>
     )
   }
@@ -77,7 +128,8 @@ export default class Welcome extends React.Component {
         {this.renderHeader()}
         {this.renderMainSlider()}
         {this.renderMenu()}
-        {this.renderList()}
+        <div className="divider" />
+        {this.renderItemList()}
       </div>
     )
   }

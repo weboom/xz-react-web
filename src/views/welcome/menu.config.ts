@@ -29,3 +29,34 @@ export const menuList = [{
   name: '全部分类',
   icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t1/22262/9/1470/4527/5c120cd0E5d3c6c66/4792ec307a853e9f.png.webp'
 }];
+
+
+export const sliderList = [
+  '//m.360buyimg.com/mobilecms/s700x280_jfs/t1/82821/30/11477/108517/5d8cafcfEa36c6fd9/0d7162b880fb1268.jpg!cr_1125x445_0_171!q70.jpg.dpg',
+  '//m.360buyimg.com/mobilecms/s700x280_jfs/t1/39975/6/2210/103146/5cbfdd4fEd359fb15/90c41bac5ab851de.jpg!cr_1125x445_0_171!q70.jpg.dpg',
+  '//m.360buyimg.com/mobilecms/s700x280_jfs/t1/68121/7/11381/151472/5d8e01c1E187dbef5/3294665a816d0e15.jpg!cr_1125x445_0_171!q70.jpg.dpg',
+  '//m.360buyimg.com/mobilecms/s700x280_jfs/t1/71176/35/11397/99815/5d8b45b4Eea9d85d3/a20846eb35f55bcb.jpg!cr_1125x445_0_171!q70.jpg.dpg'
+]
+
+export const itemList = [
+  {
+    imgs: ['//img13.360buyimg.com/mobilecms/s372x372_jfs/t1/51985/35/12114/431651/5d905de5E7b201a86/594e90216fbf2f54.png!q70.webp'],
+    name: '松下（Panasonic） 8公斤大容量爱妻号家用全自动洗衣机  XQB80-U8 定频电机款',
+    price: 415800
+  },
+  {
+    imgs: ['//img12.360buyimg.com/mobilecms/s372x372_jfs/t1/52980/26/6566/186930/5d43bcf8E95bea096/7f2ab41ae6ccef5a.jpg!q70.dpg.webp'],
+    name: '休闲鞋女内增高2019夏季新款韩版百搭小白鞋女鞋 黑色 此款为标准码',
+    price: 15300
+  },
+  {
+    imgs: ['//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/80508/18/1341/199520/5cfa03efEd42687a0/d30c2b410ec597d3.jpg!q70.dpg.webp'],
+    name: '季雅 电视柜茶几组合套装简约伸缩欧式客厅大理石地柜 电视柜2.4-3.2m（不包含茶几）',
+    price: 111800
+  },
+  {
+    imgs: ['//img12.360buyimg.com/mobilecms/s372x372_jfs/t1/79793/39/7550/244656/5d577b80E85fb7def/6542dd2356d00619.jpg!q70.dpg.webp'],
+    name: '多层鞋架简易门口经济型鞋柜家用省空间宿舍仿进门鞋架子收纳 75cm七层古檀木',
+    price: 16100
+  }
+]
