@@ -1,90 +1,88 @@
 .page-welcome {
   width: 100%;
   overflow: hidden;
-}
 
-.divider {
-  height: 8px;
-}
+  .divider {
+    height: 8px;
+  }
 
-.mod-search {
-  display: block;
-  position: sticky;
-  left: 0;
-  top: 0;
-  right: 0;
-  z-index: 15;
-}
+  .mod-search {
+    display: block;
+    position: sticky;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 15;
+  }
 
-.search-box {
-  display: flex;
-  align-items: center;
-  height: 44px;
-  box-sizing: border-box;
-  line-height: 28px;
-  padding: 8px 12px;
-  /* background-color: #e43130; */
-}
-
-.search-text {
-  display: block;
-  flex: 1;
-  font-size: 12px;
-  background: #fff;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 0 10px;
-  border-radius: 2px;
-  color: #232326;
-}
-
-.search-btn {
-  font-size: 14px;
-  color: #fff;
-}
-
-.icon-menu {
-  width: 20px;
-  height: 18px;
-}
-
-.mod-main-adver {
-  position: relative;
-  width: 100%;
-  height: 150px;
-}
-
-.slider-bg {
-  position: absolute;
-  left: -25%;
-  top: -44px;
-  width: 150%;
-  height: 110%;
-  border-bottom-left-radius: 100%;
-  border-bottom-right-radius: 100%;
-  background-image: linear-gradient(0deg,#f1503b,#c82519 50%);
-}
-
-.g-logo-wrap {
-  width: 176px;
-  height: 176px;
-}
-
-.g-list {
-  padding: 0 10px;
-}
-
-.g-item {
-  float: left;
-  width: 50%;
-  box-sizing: border-box;
-  padding-bottom: 4px;
-  position: relative;
-  background: #fff;
-}
-
-.g-item-name {
-  box-sizing: border-box;
+  .search-box {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    box-sizing: border-box;
+    line-height: 28px;
+    padding: 8px 12px;
+  }
+  
+  .search-text {
+    display: block;
+    flex: 1;
+    font-size: 12px;
+    background: #fff;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0 10px;
+    border-radius: 2px;
+    color: #232326;
+  }
+  
+  .search-btn {
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  .icon-menu {
+    width: 20px;
+    height: 18px;
+  }
+  
+  .mod-main-adver {
+    position: relative;
+    width: 100%;
+    height: 150px;
+  }
+  
+  .slider-bg {
+    position: absolute;
+    left: -25%;
+    top: -44px;
+    width: 150%;
+    height: 110%;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    background-image: linear-gradient(0deg,#f1503b,#c82519 50%);
+  }
+  
+  .g-logo-wrap {
+    width: 176px;
+    height: 176px;
+  }
+  
+  .g-list {
+    padding: 0 10px;
+  }
+  
+  .g-item {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    padding-bottom: 4px;
+    position: relative;
+    background: #fff;
+  }
+  
+  .g-item-name {
+    box-sizing: border-box;
     height: 31px;
     font-size: 13px;
     overflow: hidden;
@@ -98,56 +96,57 @@
     line-height: 16px;
     margin-bottom: 3px;
     padding: 0 4px;
-}
-
-.g-item-price {
-  color: #f23030;
-  display: inline-block;
-  padding: 0 5px 0 4px;
-  position: relative;
-  top: 1px;
-  height: 25px;
-  line-height: 25px;
-}
-
-.g-logo-wrap img {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.slider-list {
-  padding: 0 12px;
-}
-
-.slider-list img {
-  border-radius: 8px;
-}
-
-.d-list {
-  padding: 12px;
-}
-
-.menu {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.menu-item {
-  width: 20%;
-  text-align: center;
-}
-
-.menu-name {
-  display: block;
-  color: #666;
-  font-size: 12px;
-  line-height: 18px;
-  margin-top: 6px;
-}
-
-.menu-icon {
-  width: 40px;
-  height: 40px;
-  margin-top: 10px;
+  }
+  
+  .g-item-price {
+    color: #f23030;
+    display: inline-block;
+    padding: 0 5px 0 4px;
+    position: relative;
+    top: 1px;
+    height: 25px;
+    line-height: 25px;
+  }
+  
+  .g-logo-wrap img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .slider-list {
+    padding: 0 12px;
+  }
+  
+  .slider-list img {
+    border-radius: 8px;
+  }
+  
+  .d-list {
+    padding: 12px;
+  }
+  
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .menu-item {
+    width: 20%;
+    text-align: center;
+  }
+  
+  .menu-name {
+    display: block;
+    color: #666;
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 6px;
+  }
+  
+  .menu-icon {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+  }
 }

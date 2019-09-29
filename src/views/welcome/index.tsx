@@ -80,7 +80,6 @@ export default class Welcome extends React.Component {
             {this.state.data.map(val => (
               <a
                 key={val}
-                href="http://www.alipay.com"
                 style={{
                   display: 'inline-block',
                   width: '100%',
