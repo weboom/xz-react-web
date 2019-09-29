@@ -1,6 +1,7 @@
 import * as React from 'react';
 import apis from '../../apis';
 import './index.css';
+import { menuList } from './menu.config';
 
 export default class Welcome extends React.Component {
   public state = {
@@ -31,9 +32,51 @@ export default class Welcome extends React.Component {
     )
   }
 
+  public renderMenu = () => {
+    return (
+      <div className="mod-menu">
+        <div className="menu">
+          {
+            menuList.map((item, index) => {
+              return (
+                <div className="menu-item" key={index}>
+                  <img className="menu-icon" src={item.icon} alt=""/>
+                  <span className="menu-name">{ item.name }</span>
+                </div>
+              )
+            })
+          }
+        </div>
+      </div>
+    )
+  }
+
+  public renderHeader = () => {
+    return (
+      <div className="mod-search">
+        <div className="search-box">
+          <img className="icon-menu" src={require('../../assets/img/menu.png')} alt=""/>
+          <span className="search-text">输入关键词</span>
+          <span className="search-btn">扫一扫</span>
+        </div>
+      </div>
+    )
+  }
+
+  public renderMainSlider = () => {
+    return (
+      <div className="mod-main-adver">
+        <div className="slider-bg" />
+      </div>
+    )
+  }
+
   public render () {
     return (
       <div className="page-welcome">
+        {this.renderHeader()}
+        {this.renderMainSlider()}
+        {this.renderMenu()}
         {this.renderList()}
       </div>
     )
