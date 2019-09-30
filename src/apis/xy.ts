@@ -8,7 +8,7 @@ export default {
 
   // 登录
   login (
-    { mobile, password }: { mobile: string, password: number }
+    { mobile, password }: { mobile: string, password: string }
   ) {
     return http.post(`${host}/user/login`, { mobile, password })
   },

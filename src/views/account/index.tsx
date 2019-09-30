@@ -3,28 +3,43 @@ import './index.css';
 import Tabbar from '../../components/tabbar';
 import Icon from 'antd-mobile/lib/icon';
 import List from 'antd-mobile/lib/list';
+import xzApi from '../../apis/xy';
 
 const Item = List.Item;
 
 export default class extends React.Component {
+  state = {
+    userInfo: null
+  }
+
   public renderProfile () {
+    const userInfo: any = this.state.userInfo;
+
     return (
       <div className="mod-banner">
         <div className="user-cover-wrap">
           <div className="user-cover" />
         </div>
         <div className="user-box">
-          <img className="user-avatar" src={require('../../assets/img/avatar.png')} alt=""/>
-          <div className="avatar-right">
-            <div>
-              <div className="nickname">厉害了我的国</div>
-              <div className="btn-profile">
-                <span>个人主页</span>
-                <Icon type="right" />
+          <img className="user-avatar" src={
+            userInfo ? userInfo.avatar : require('../../assets/img/avatar.png')
+          } alt=""/>
+          {
+            userInfo ? (
+              <div className="avatar-right">
+                <div>
+                  <div className="nickname">{ userInfo.nickname }</div>
+                  <div className="btn-profile">
+                    <span>个人主页</span>
+                    <Icon className="icon" type="right" />
+                  </div>
+                </div>
+                <div className="btn-checkin">签到</div>
               </div>
-            </div>
-            <div className="btn-checkin">签到</div>
-          </div>
+            ) : (
+              <div onClick={this.handleLogin}>请先登录</div>
+            )
+          }
         </div>
         <div className="card-menu">
           <div className="">
@@ -65,6 +80,21 @@ export default class extends React.Component {
         </List>
       </div>
     )
+  }
+
+  public handleLogin = () => {
+    const onSuccess = (res: any) => {
+      console.log(res);
+      if (res && res.success) {
+        this.setState({
+          userInfo: res.data
+        })
+      }
+    }
+    xzApi.login({
+      mobile: '13249064450',
+      password: '123456'
+    }).then(onSuccess)
   }
 
   render () {

@@ -1,1 +1,1 @@
-export const host = 'http://ynowapi.airtlab.com';
+export const host = 'http://xz.airtlab.com/api';
