@@ -3,6 +3,7 @@ import apis from '../../apis';
 import './index.css';
 import Carousel from 'antd-mobile/lib/carousel';
 import { menuList, sliderList, itemList } from './menu.config';
+import Tabbar from '../../components/tabbar';
 
 export default class Welcome extends React.Component {
   public state = {
@@ -88,7 +89,6 @@ export default class Welcome extends React.Component {
               >
                 <img
                   src={val}
-                  alt=""
                   style={{ width: '100%', verticalAlign: 'top' }}
                 />
               </a>
@@ -99,13 +99,18 @@ export default class Welcome extends React.Component {
     )
   }
 
+  public navigateToItem = () => {
+    const history: any = (this.props as any).history;
+    history.push('/item');
+  }
+
   public renderItemList = () => {
     return (
       <div className="g-list">
           {
             itemList.map((item, index) => {
               return (
-                <div className="g-item" key={index}>
+                <div className="g-item" key={index} onClick={this.navigateToItem}>
                   <div className="g-logo-wrap">
                     <img src={item.imgs[0]} alt=""/>
                   </div>
@@ -123,12 +128,13 @@ export default class Welcome extends React.Component {
 
   public render () {
     return (
-      <div className="page-welcome">
+      <div className="page-welcome page-has-tabbar">
         {this.renderHeader()}
         {this.renderMainSlider()}
         {this.renderMenu()}
         <div className="divider" />
         {this.renderItemList()}
+        <Tabbar />
       </div>
     )
   }

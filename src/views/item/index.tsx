@@ -51,7 +51,31 @@ export default class extends React.Component {
   public renderFooter() {
     return (
       <div className="footer">
-        <div>等待</div>
+        <div className="act-list">
+          <div className="act-item">
+            <span>喜欢</span>
+          </div>
+          <div className="act-item">
+            <span>收藏</span>
+          </div>
+          <div className="act-item">
+            <span>留言</span>
+          </div>
+        </div>
+        <div className="btn-chat">我想要</div>
+      </div>
+    )
+  }
+
+  public renderComment() {
+    return (
+      <div className="mod-comment">
+        <div className="mod__head">
+          <span>留言</span>
+        </div>
+        <div className="mod__body">
+          <span className="zero-text">暂无留言</span>
+        </div>
       </div>
     )
   }
@@ -59,9 +83,11 @@ export default class extends React.Component {
   public render () {
     return (
       <div className="page-product">
-        {this.renderBanner()}
-        {this.renderGInfo()}
-        {this.renderUserInfo()}
+        { this.renderBanner() }
+        { this.renderGInfo() }
+        { this.renderUserInfo() }
+        { this.renderFooter() }
+        { this.renderComment() }
       </div>
     )
   }

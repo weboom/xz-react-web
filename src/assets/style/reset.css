@@ -6,3 +6,7 @@
 body {
   background: #f6f6f6;
 }
+
+.page-has-tabbar {
+  padding-bottom: 60px;
+}

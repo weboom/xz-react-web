@@ -8,12 +8,14 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 import Welcome from './views/welcome';
+import Account from './views/account';
 import Item from './views/item';
 
 ReactDOM.render(
   <BrowserRouter>
-    <Route path="/item" exact component={Item} />
     <Route path="/" exact component={Welcome} />
+    <Route path="/item" exact component={Item} />
+    <Route path="/account" exact component={Account} />
     <Route path="/app" exact component={App} />
   </BrowserRouter>,
   document.getElementById('root') as HTMLElement
