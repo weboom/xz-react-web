@@ -14,6 +14,7 @@ const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const px2rem = require('postcss-px2rem');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -210,6 +211,9 @@ module.exports = {
                         plugins: () => [
                           require('postcss-flexbugs-fixes'),
                           require('precss'),
+                          px2rem({
+                            remUnit: 75
+                          }),
                           autoprefixer({
                             browsers: [
                               '>1%',
