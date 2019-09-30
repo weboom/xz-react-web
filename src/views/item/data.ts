@@ -1,8 +1,8 @@
 export const itemInfo = {
   imgs: [
-    '//m.360buyimg.com/mobilecms/s750x750_jfs/t5614/278/4769202585/228278/e564604a/5954ab30N4fb92823.jpg!q80.dpg.webp',
-    '//m.360buyimg.com/mobilecms/s843x843_jfs/t6667/90/1614372700/226524/1da7ffc6/5954ab24N554918e1.jpg!q70.dpg.webp',
-    '//m.360buyimg.com/mobilecms/s843x843_jfs/t5815/317/4801542868/251884/c92c6fce/5954ab1fNa7fdefcf.jpg!q70.dpg.webp',
+    '//m.360buyimg.com/mobilecms/s750x750_jfs/t5614/278/4769202585/228278/e564604a/5954ab30N4fb92823.jpg!q80.dpg',
+    '//m.360buyimg.com/mobilecms/s843x843_jfs/t6667/90/1614372700/226524/1da7ffc6/5954ab24N554918e1.jpg!q70.dpg',
+    '//m.360buyimg.com/mobilecms/s843x843_jfs/t5815/317/4801542868/251884/c92c6fce/5954ab1fNa7fdefcf.jpg!q70.dpg',
   ],
   author: {
     nickname: '潮汕鹿先人',

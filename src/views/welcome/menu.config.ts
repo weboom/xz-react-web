@@ -45,17 +45,17 @@ export const itemList = [
     price: 415800
   },
   {
-    imgs: ['//img12.360buyimg.com/mobilecms/s372x372_jfs/t1/52980/26/6566/186930/5d43bcf8E95bea096/7f2ab41ae6ccef5a.jpg!q70.dpg.webp'],
+    imgs: ['//img12.360buyimg.com/mobilecms/s372x372_jfs/t1/52980/26/6566/186930/5d43bcf8E95bea096/7f2ab41ae6ccef5a.jpg!q70.dpg'],
     name: '休闲鞋女内增高2019夏季新款韩版百搭小白鞋女鞋 黑色 此款为标准码',
     price: 15300
   },
   {
-    imgs: ['//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/80508/18/1341/199520/5cfa03efEd42687a0/d30c2b410ec597d3.jpg!q70.dpg.webp'],
+    imgs: ['//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/80508/18/1341/199520/5cfa03efEd42687a0/d30c2b410ec597d3.jpg!q70.dpg'],
     name: '季雅 电视柜茶几组合套装简约伸缩欧式客厅大理石地柜 电视柜2.4-3.2m（不包含茶几）',
     price: 111800
   },
   {
-    imgs: ['//img12.360buyimg.com/mobilecms/s372x372_jfs/t1/79793/39/7550/244656/5d577b80E85fb7def/6542dd2356d00619.jpg!q70.dpg.webp'],
+    imgs: ['//img12.360buyimg.com/mobilecms/s372x372_jfs/t1/79793/39/7550/244656/5d577b80E85fb7def/6542dd2356d00619.jpg!q70.dpg'],
     name: '多层鞋架简易门口经济型鞋柜家用省空间宿舍仿进门鞋架子收纳 75cm七层古檀木',
     price: 16100
   }
