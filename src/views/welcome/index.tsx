@@ -134,7 +134,7 @@ export default class Welcome extends React.Component {
         {this.renderMenu()}
         <div className="divider" />
         {this.renderItemList()}
-        <Tabbar />
+        <Tabbar {...this.props} />
       </div>
     )
   }
