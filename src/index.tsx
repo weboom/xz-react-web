@@ -12,6 +12,15 @@ import Account from './views/account';
 import Item from './views/item';
 import Category from './views/category';
 import Chat from './views/chat';
+import Point from './views/point';
+import Collect from './views/collect';
+import Like from './views/like';
+import Follow from './views/follow';
+
+// import AddItem from './views/addItem';
+// import UpdateItem from './views/updateItem';
+// import MyItems from './views/myItems';
+// import Shipping from './views/shipping';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -20,6 +29,10 @@ ReactDOM.render(
     <Route path="/account" exact component={Account} />
     <Route path="/category" exact component={Category} />
     <Route path="/chat" exact component={Chat} />
+    <Route path="/point" exact component={Point} />
+    <Route path="/collect" exact component={Collect} />
+    <Route path="/like" exact component={Like} />
+    <Route path="/follow" exact component={Follow} />
     <Route path="/app" exact component={App} />
   </BrowserRouter>,
   document.getElementById('root') as HTMLElement

@@ -4,6 +4,7 @@ import Tabbar from '../../components/tabbar';
 import Icon from 'antd-mobile/lib/icon';
 import List from 'antd-mobile/lib/list';
 import xzApi from '../../apis/xy';
+import * as store from 'store';
 
 const Item = List.Item;
 
@@ -37,24 +38,32 @@ export default class extends React.Component {
                 <div className="btn-checkin">签到</div>
               </div>
             ) : (
-              <div onClick={this.handleLogin}>请先登录</div>
+              <div onClick={this.handleLogin}>立即登录</div>
             )
           }
         </div>
         <div className="card-menu">
-          <div className="">
+          <div className="" onClick={() => {
+            (this.props as any).history.push('/follow')
+          }}>
             <i className="icon iconfont icon-guanzhu" />
             <span className="text">关注(0)</span>
           </div>
-          <div className="">
+          <div className="" onClick={() => {
+            (this.props as any).history.push('/collect')
+          }}>
             <i className="icon iconfont icon-shoucang" />
             <span className="text">收藏(0)</span>
           </div>
-          <div className="">
+          <div className="" onClick={() => {
+            (this.props as any).history.push('/like')
+          }}>
             <i className="icon iconfont icon-zan" />
             <span className="text">点赞(0)</span>
           </div>
-          <div className="">
+          <div className="" onClick={() => {
+            (this.props as any).history.push('/point')
+          }}>
             <i className="icon iconfont icon-diamond" />
             <span className="text">积分(0)</span>
           </div>
@@ -84,17 +93,29 @@ export default class extends React.Component {
 
   public handleLogin = () => {
     const onSuccess = (res: any) => {
-      console.log(res);
       if (res && res.success) {
         this.setState({
           userInfo: res.data
         })
+        store.set('userInfo', res.data);
+        store.set('token', res.data.token);
       }
     }
     xzApi.login({
       mobile: '13249064450',
       password: '123456'
     }).then(onSuccess)
+  }
+
+  public initUserInfo = () => {
+    const userInfo: any = store.get('userInfo');
+    this.setState({
+      userInfo
+    })
+  }
+
+  public componentWillMount() {
+    this.initUserInfo();
   }
 
   render () {

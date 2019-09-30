@@ -6,6 +6,9 @@
 body {
   width: 375px;
   background: #f6f6f6;
+  .am-list-item .am-list-line .am-list-content {
+    font-size: 15px;
+  }
 }
 
 .page-has-tabbar {
