@@ -30,7 +30,7 @@ export default class extends React.Component {
     return (
       <div className="page-account">
         { this.renderProfile() }
-        <Tabbar { ...this.props }/>
+        <Tabbar { ...this.props } activeKey="account" />
       </div>
     )
   }

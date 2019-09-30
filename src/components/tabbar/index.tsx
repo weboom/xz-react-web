@@ -2,11 +2,21 @@ import * as React from 'react';
 import TabBar from 'antd-mobile/lib/tab-bar';
 import './index.css';
 
-export default class extends React.Component {
+export interface Props {
+  activeKey: string;
+}
+
+export default class extends React.Component<Props, object> {
   state = {
     selectedTab: 'redTab',
     hidden: false,
     fullScreen: false
+  }
+
+  componentDidMount () {
+    this.setState({
+      selectedTab: (this.props as any).activeKey 
+    })
   }
 
    renderContent(pageText: any) {
@@ -61,15 +71,13 @@ export default class extends React.Component {
                background: 'url(https:zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
              />
              }
-             selected={this.state.selectedTab === 'blueTab'}
-             badge={1}
+             selected={this.state.selectedTab === 'welcome'}
              onPress={() => {
                this.setState({
-                 selectedTab: 'blueTab',
+                 selectedTab: 'welcome',
                });
                (this.props as any).history.push('/');
              }}
-             data-seed="logId"
            >
              {this.renderContent('首页')}
            </TabBar.Item>
@@ -90,15 +98,13 @@ export default class extends React.Component {
              }
              title="分类"
              key="分类"
-             badge={'new'}
-             selected={this.state.selectedTab === 'redTab'}
+             selected={this.state.selectedTab === 'category'}
              onPress={() => {
                this.setState({
-                 selectedTab: 'redTab',
+                 selectedTab: 'category',
                });
                (this.props as any).history.push('/category');
              }}
-             data-seed="logId1"
            >
              {this.renderContent('分类')}
            </TabBar.Item>
@@ -120,10 +126,10 @@ export default class extends React.Component {
              title="聊天"
              key="聊天"
              dot
-             selected={this.state.selectedTab === 'greenTab'}
+             selected={this.state.selectedTab === 'chat'}
              onPress={() => {
                this.setState({
-                 selectedTab: 'greenTab',
+                 selectedTab: 'chat',
                });
                (this.props as any).history.push('/chat');
              }}
@@ -135,10 +141,10 @@ export default class extends React.Component {
              selectedIcon={{ uri: 'https:zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
              title="我的"
              key="我的"
-             selected={this.state.selectedTab === 'yellowTab'}
+             selected={this.state.selectedTab === 'account'}
              onPress={() => {
                this.setState({
-                 selectedTab: 'yellowTab',
+                 selectedTab: 'account',
                });
                (this.props as any).history.push('/account');
              }}

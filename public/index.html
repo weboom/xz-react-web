@@ -20,6 +20,28 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>语锲闲置</title>
+    <script type=text/javascript>;(function(win, undefined) {
+      var doc = win.document,
+        docEl = doc.documentElement,
+        dpr = win.devicePixelRatio || 1,
+        evtName = 'resize',
+        resizeEvt = function() {
+          var docWidth = docEl.getBoundingClientRect().width || 375
+          docEl.style.fontSize = Math.min((docWidth / 10) * 2, 100) + 'px' // 当屏幕尺寸为 375 * 667时 根节点 font-size 为 75px
+        }
+      if (win.addEventListener) {
+        win.addEventListener(evtName, resizeEvt, false)
+      }
+      docEl.setAttribute('data-dpr', dpr)
+      var ua = window.navigator.userAgent
+      if (/iPhone/.test(ua)) {
+        docEl.setAttribute('data-iphone', true)
+      }
+      if (/Android/.test(ua)) {
+        docEl.setAttribute('data-android', true)
+      }
+      resizeEvt()
+    })(window)</script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
