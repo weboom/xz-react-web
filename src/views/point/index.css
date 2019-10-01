@@ -1,0 +1,35 @@
+.page-point {
+  .list {
+
+  }
+
+  .list-wrap {
+    padding: 12px;
+  }
+
+  .item {
+    padding: 6px 12px;
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 4px;
+  }
+
+  .item-date {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  .item-value {
+    float: right;
+    margin-top: -14px;
+    color: #f44;
+  }
+
+  .item-desc {
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    color: #666;
+  }
+}

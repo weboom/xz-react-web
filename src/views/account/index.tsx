@@ -5,16 +5,19 @@ import Icon from 'antd-mobile/lib/icon';
 import List from 'antd-mobile/lib/list';
 import xzApi from '../../apis/xy';
 import * as store from 'store';
+import Toast from 'antd-mobile/lib/toast';
 
 const Item = List.Item;
 
 export default class extends React.Component {
   state = {
-    userInfo: null
+    userInfo: null,
+    checkState: false
   }
 
   public renderProfile () {
     const userInfo: any = this.state.userInfo;
+    const { checkState } = this.state;
 
     return (
       <div className="mod-banner">
@@ -35,7 +38,9 @@ export default class extends React.Component {
                     <Icon className="icon" type="right" />
                   </div>
                 </div>
-                <div className="btn-checkin">签到</div>
+                <div className="btn-checkin" onClick={this.handleClickCheckin}>
+                  <span>{checkState ? '已签到' : '立即签到'}</span>
+                </div>
               </div>
             ) : (
               <div onClick={this.handleLogin}>立即登录</div>
@@ -44,25 +49,25 @@ export default class extends React.Component {
         </div>
         <div className="card-menu">
           <div className="" onClick={() => {
-            (this.props as any).history.push('/follow')
+            this.switchUrl('/follow')
           }}>
             <i className="icon iconfont icon-guanzhu" />
             <span className="text">关注(0)</span>
           </div>
           <div className="" onClick={() => {
-            (this.props as any).history.push('/collect')
+            this.switchUrl('/collect')
           }}>
             <i className="icon iconfont icon-shoucang" />
             <span className="text">收藏(0)</span>
           </div>
           <div className="" onClick={() => {
-            (this.props as any).history.push('/like')
+            this.switchUrl('/like')
           }}>
             <i className="icon iconfont icon-zan" />
             <span className="text">点赞(0)</span>
           </div>
           <div className="" onClick={() => {
-            (this.props as any).history.push('/point')
+            this.switchUrl('/point')
           }}>
             <i className="icon iconfont icon-diamond" />
             <span className="text">积分(0)</span>
@@ -114,8 +119,48 @@ export default class extends React.Component {
     })
   }
 
+  public switchUrl = (url: string) => {
+    const history = (this.props as any).history;
+    history.push(url);
+  }
+
   public componentWillMount() {
     this.initUserInfo();
+    this.getCheckin();
+  }
+
+  public getCheckin = () => {
+    const onSuccss = (res: any) => {
+      if (res && res.success) {
+        this.setState({
+          checkState: res.data.status === 1
+        })
+      }
+    }
+    xzApi.getCheckinStatus().then(onSuccss)
+  }
+
+  public doCheckin = async() => {
+    const callback = (res: any) => {
+      if (res && res.success) {
+        Toast.success('签到成功');
+        this.setState({
+          checkState: true
+        })
+      } else {
+        Toast.fail(res.errMsg);
+      }
+    }
+    const ret = await xzApi.checkin();
+    callback(ret);
+  }
+
+  public handleClickCheckin = () => {
+    if (!this.state.checkState) {
+      this.doCheckin();
+    } else {
+      (this.props as any).history.push('/point')
+    }
   }
 
   render () {

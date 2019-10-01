@@ -1,0 +1,58 @@
+.page-follow {
+  .list-wrap {
+    padding: 12px;
+  }
+
+  .item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 4px;
+  }
+
+  .item-date {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  .item-value {
+    float: right;
+    margin-top: -14px;
+    color: #f44;
+  }
+
+  .item-desc {
+    font-size: 10px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    color: #666;
+  }
+
+  .avatar {
+    width: 45px;
+    height: 45px;
+    margin-right: 12px;
+  }
+
+  .nickname {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  .btn-follow {
+    position: absolute;
+    right: 12px;
+    padding: 0 8px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 10px;
+    text-align: center;
+    color: #666;
+    border: 1px solid #ddd;
+  }
+}

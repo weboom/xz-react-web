@@ -1,0 +1,19 @@
+.navbar {
+  position: sticky;
+  z-index: 25;
+  left: 0;
+  top: 0;
+  border-bottom: 1px solid #e5e5e5;
+
+  .am-navbar-left {
+    padding-left: 16px;
+  }
+
+  .am-icon-md {
+    position: relative;
+    left: -10px;
+    width: 30px;
+    height: 30px;
+    color: #666;
+  }
+}

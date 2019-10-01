@@ -2,10 +2,11 @@ import qs from 'qs'
 import axios from 'axios'
 import cookies from 'js-cookie'
 import Url from 'url-parse'
+import * as store from 'store'
 
 axios.interceptors.request.use(
   function (config) {
-    const token = cookies.get('token') || ''
+    const token = store.get('token') || ''
 
     const url = new Url(config.url, true)
     url.query.token = token

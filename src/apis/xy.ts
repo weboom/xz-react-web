@@ -2,23 +2,34 @@ import { host } from '../config'
 import http from '../utils/http'
 
 export default {
+  /**
+   * @description 获取七牛云上传token
+   */
   get7nToken () {
     return http.get(`${host}/upload/getToken`)
   },
 
-  // 登录
+  /**
+   * @description 登录
+   * @param param0
+   */
   login (
     { mobile, password }: { mobile: string, password: string }
   ) {
     return http.post(`${host}/user/login`, { mobile, password })
   },
 
-  // 获取用户信息
+  /**
+   * @description 获取用户信息
+   */
   getUserInfo () {
     return http.get(`${host}/user/userInfo`)
   },
 
-  // 获取指定用户的信息
+  /**
+   * @description 获取指定用户的信息
+   * @param param0 
+   */
   getUserProfile ({ uid }: { uid : string }) {
     return http.get(`${host}/user/profile?uid=${uid}`)
   },
