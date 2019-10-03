@@ -1,0 +1,102 @@
+.page-collect {
+  .list {
+    padding: 12px;
+  }
+
+  .item {
+    overflow: hidden;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  .g-logo {
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+  }
+
+  .g-name {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .item-goods {
+    display: flex;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
+  .g-logo {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .g-msg {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .btn-cancle {
+    display: inline-block;
+    right: 12px;
+    padding: 0 10px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 10px;
+    text-align: center;
+    color: #333;
+    border: 1px solid #333;
+    border-radius: 2px;
+  }
+
+  .act-list {
+    text-align: right;
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+
+  .item-user {
+    display: flex;
+    font-size: 12px;
+    padding-bottom: 10px;
+  }
+
+  .desc {
+    font-size: 10px;
+    color: #bbb7b7;
+    margin-top: 6px;
+  }
+
+  .line {
+    height: 1px;
+    background: #ddd;
+    transform: scaleY(.5);
+  }
+
+  .item-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+  }
+
+  .city {
+    color:#2196f3;
+  }
+
+  .name {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}

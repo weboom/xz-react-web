@@ -1,9 +1,10 @@
 import * as React from 'react';
-import apis from '../../apis';
+// import apis from '../../apis';
 import './index.css';
 import Carousel from 'antd-mobile/lib/carousel';
-import { menuList, sliderList, itemList } from './menu.config';
+import { menuList, sliderList } from './menu.config';
 import Tabbar from '../../components/tabbar';
+import XzProductList from '../../components/xzProductList';
 
 export default class Welcome extends React.Component {
   public state = {
@@ -13,14 +14,6 @@ export default class Welcome extends React.Component {
   }
 
   public componentDidMount () {
-    apis.getDemandList({}).then(ret => {
-      const res = ret as any;
-      if (res && res.success) {
-        this.setState({
-          list: res.data.list
-        })
-      }
-    })
     setTimeout(() => {
       this.setState({
         data: sliderList
@@ -104,28 +97,6 @@ export default class Welcome extends React.Component {
     history.push('/item');
   }
 
-  public renderItemList = () => {
-    return (
-      <div className="g-list">
-          {
-            itemList.map((item, index) => {
-              return (
-                <div className="g-item" key={index} onClick={this.navigateToItem}>
-                  <div className="g-logo-wrap">
-                    <img src={item.imgs[0]} alt=""/>
-                  </div>
-                  <div className="g-item-name">
-                    <div>{ item.name }</div>
-                  </div>
-                  <div className="g-item-price">¥{+item.price / 100}</div>
-                </div>
-              )
-            })
-          }
-      </div>
-    )
-  }
-
   public render () {
     return (
       <div className="page-welcome page-has-tabbar">
@@ -133,7 +104,7 @@ export default class Welcome extends React.Component {
         {this.renderMainSlider()}
         {this.renderMenu()}
         <div className="divider" />
-        {this.renderItemList()}
+        <XzProductList {...this.props} />
         <Tabbar {...this.props} activeKey="welcome" />
       </div>
     )

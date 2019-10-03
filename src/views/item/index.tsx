@@ -1,48 +1,65 @@
 import * as React from 'react';
-import { itemInfo } from './data';
+// import { itemInfo } from './data';
 import Carousel from 'antd-mobile/lib/carousel';
+import xzApi from '../../apis/xy';
 import './index.css';
 
 export default class extends React.Component {
+  state = {
+    itemInfo: null
+  }
 
   public renderBanner = () => {
+    const itemInfo: any = this.state.itemInfo;
+    const imgs: any[] = itemInfo.imgs;
+
     return (
       <Carousel autoplay={false} infinite>
-        {itemInfo.imgs.map(val => (
-          <div className="banner-slide" key={val} style={{
-            backgroundImage: `url(${val})`
-          }}>
-            {/* <img
-              src={val}
-              style={{ width: '100%', verticalAlign: 'top' }}
-            /> */}
-          </div>
+        {imgs.map(val => (
+          <div
+            className="banner-slide"
+            key={val}
+            style={{
+              backgroundImage: `url(${val})`
+            }}
+          />
         ))}
     </Carousel>
     )
   }
 
+  componentDidMount () {
+    const xzProductId = (this.props as any).match.params.xzProductId
+    xzApi.getXzProductItem(xzProductId).then(res => {
+      this.setState({
+        itemInfo: res.data
+      })
+    })
+  }
+
   public renderGInfo () {
+    const itemInfo: any = this.state.itemInfo;
     return (
       <div className="mod-ginfo">
         <div className="col-point">
           <span>500</span>
           <img className="icon-point" src={require('../../assets/img/point.png')} alt=""/>
         </div>
-        <div className="g-name">{itemInfo.name}</div>
-        <div className="g-desc">{itemInfo.desc}</div>
+        <div className="g-name">{itemInfo.title}</div>
+        <div className="g-desc">{itemInfo.description}</div>
       </div>
     )
   }
 
   public renderUserInfo() {
-    const author = itemInfo.author;
+    const itemInfo: any = this.state.itemInfo;
+    const author = itemInfo.user;
     return (
       <div className="mod-author">
         <img className="author-avatar" src={author.avatar} alt="" />
         <div>
           <div className="author-name">{author.nickname}</div>
-          <div className="author-desc">{author.desc}</div>
+          <div className="author-desc">{author.residence}</div>
         </div>
       </div>
     )
@@ -81,14 +98,20 @@ export default class extends React.Component {
   }
   
   public render () {
-    return (
-      <div className="page-product">
-        { this.renderBanner() }
-        { this.renderGInfo() }
-        { this.renderUserInfo() }
-        { this.renderFooter() }
-        { this.renderComment() }
-      </div>
-    )
+    if (this.state.itemInfo) {
+      return (
+        <div className="page-product">
+          <div>
+            { this.renderBanner() }
+            { this.renderGInfo() }
+            { this.renderUserInfo() }
+            { this.renderFooter() }
+            { this.renderComment() }
+          </div>
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 }

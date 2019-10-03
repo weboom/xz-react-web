@@ -15,7 +15,7 @@ export default class extends React.Component {
 
   async componentWillMount () {
     const res: any = await xzApi.getCollect({
-      typeId: 1,
+      typeId: 2,
       objectId: 1
     })
     if (res && res.success) {

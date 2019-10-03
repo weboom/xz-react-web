@@ -9,8 +9,21 @@ body {
   .am-list-item .am-list-line .am-list-content {
     font-size: 15px;
   }
+  .am-button-primary {
+    border-color: #ff5b05;
+    background-color: #ff5b05;
+  }
 }
 
 .page-has-tabbar {
   padding-bottom: 60px;
+}
+
+.u-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 12px;
+  box-sizing: border-box;
 }

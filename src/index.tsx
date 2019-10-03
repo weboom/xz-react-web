@@ -16,8 +16,9 @@ import Point from './views/point';
 import Collect from './views/collect';
 import Like from './views/like';
 import Follow from './views/follow';
+import AddItem from './views/addItem';
+import MyXzProduct from './views/myXzProduct';
 
-// import AddItem from './views/addItem';
 // import UpdateItem from './views/updateItem';
 // import MyItems from './views/myItems';
 // import Shipping from './views/shipping';
@@ -25,7 +26,7 @@ import Follow from './views/follow';
 ReactDOM.render(
   <BrowserRouter>
     <Route path="/" exact component={Welcome} />
-    <Route path="/item" exact component={Item} />
+    <Route path="/item/:xzProductId" exact component={Item} />
     <Route path="/account" exact component={Account} />
     <Route path="/category" exact component={Category} />
     <Route path="/chat" exact component={Chat} />
@@ -33,6 +34,8 @@ ReactDOM.render(
     <Route path="/collect" exact component={Collect} />
     <Route path="/like" exact component={Like} />
     <Route path="/follow" exact component={Follow} />
+    <Route path="/addItem" exact component={AddItem} />
+    <Route path="/myXzProduct" exact component={MyXzProduct} />
     <Route path="/app" exact component={App} />
   </BrowserRouter>,
   document.getElementById('root') as HTMLElement

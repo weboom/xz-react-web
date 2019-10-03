@@ -229,5 +229,58 @@ export default {
     return http.get(`${host}/demand/getUserCreateList`, {
       params
     })
-  }
+  },
+
+  /**
+   * 发布闲置
+   * @param params 
+   */
+  addXzProduct(params: any) {
+    return http.post(`${host}/xzProduct`, params)
+  },
+
+    // 获取闲置商品
+    getXzProductList () {
+      const argv = arguments[0]
+      const categoryId = argv ? (argv.categoryId || '') : ''
+      return http.get(`${host}/xzProduct?categoryId=${categoryId}`)
+    },
+  
+    /**
+     * @description 获取闲置商品详情
+     * @param itemId 
+     */
+    getXzProductItem (itemId: any) {
+      return http.get(`${host}/xzProduct/${itemId}`)
+    },
+  
+    /**
+     * @description 创建 xzProduct
+     * @param params 
+     */
+    createXzProduct (params: object) {
+      return http.post(`${host}/xzProduct/`, params)
+    },
+    
+    /**
+     * @description 更新
+     * @param params
+     */
+    updateXzProduct (params: any) {
+      return http.post(`${host}/xzProduct/${params.itemId}`, params)
+    },
+  
+    /**
+     * @description 获取我的 xzProduct
+     */
+    getMyProduct () {
+      return http.get(`${host}/user/xzProduct`)
+    },
+  
+    /**
+     * @description 获取闲置商品分类
+     */
+    getXzCategorytList () {
+      return http.get(`${host}/xzCategory`)
+    }
 }

@@ -1,0 +1,65 @@
+.page-myXzProduct {
+  .g-logo {
+    display: block;
+    width: 167px;
+    height: 167px;
+  }
+ 
+  .g-logo-wrap {
+    width: 173.5px;
+    height: 173.5px;
+  }
+  
+  .g-list {
+    overflow: hidden;
+    padding: 0 10px;
+    padding-top: 10px;
+  }
+  
+  .g-item {
+    float: left;
+    width: 173.5px;
+    box-sizing: border-box;
+    padding-bottom: 4px;
+    position: relative;
+    background: #fff;
+    margin-bottom: 8px;
+    &:nth-child(2n) {
+      margin-left: 8px;
+    }
+  }
+  
+  .g-item-name {
+    box-sizing: border-box;
+    height: 31px;
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+    color: #232326;
+    margin-top: 5px;
+    line-height: 16px;
+    margin-bottom: 3px;
+    padding: 0 4px;
+  }
+  
+  .g-item-price {
+    color: #f23030;
+    display: inline-block;
+    padding: 0 5px 0 4px;
+    position: relative;
+    top: 1px;
+    height: 25px;
+    line-height: 25px;
+  }
+  
+  .g-logo-wrap img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+}

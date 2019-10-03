@@ -81,9 +81,11 @@ export default class extends React.Component {
     return (
       <div className="mod-link">
         <List className="my-list">
-          <Item arrow="horizontal">发布闲置</Item>
           <Item arrow="horizontal" onClick={() => {
-            console.log(2);
+            this.switchUrl('/addItem');
+          }}>发布闲置</Item>
+          <Item arrow="horizontal" onClick={() => {
+            this.switchUrl('/myXzProduct');
           }}>我的发布</Item>
           <Item arrow="horizontal" onClick={() => {
             console.log(2);
