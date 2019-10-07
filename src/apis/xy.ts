@@ -282,5 +282,9 @@ export default {
      */
     getXzCategorytList () {
       return http.get(`${host}/xzCategory`)
+    },
+    
+    getUserTotalInfo() {
+      return http.get(`${host}/user/totalInfo`)
     }
 }

@@ -46,7 +46,7 @@ export default class extends React.Component {
   render () {
     return (
       <div className="page-myXzProduct">
-        <Navbar title="我的闲置" onLeftClick={() => {
+        <Navbar title="我的发布" onLeftClick={() => {
           (this.props as any).history.goBack();
         }}/>
         <XzProdustList />

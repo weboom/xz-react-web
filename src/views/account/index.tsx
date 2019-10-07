@@ -12,12 +12,18 @@ const Item = List.Item;
 export default class extends React.Component {
   state = {
     userInfo: null,
-    checkState: false
+    checkState: false,
+    totalInfo: {
+      followNum: 0,
+      likeNum: 0,
+      collectNum: 0,
+      pointNum: 0
+    }
   }
 
   public renderProfile () {
     const userInfo: any = this.state.userInfo;
-    const { checkState } = this.state;
+    const { checkState, totalInfo } = this.state;
 
     return (
       <div className="mod-banner">
@@ -52,25 +58,25 @@ export default class extends React.Component {
             this.switchUrl('/follow')
           }}>
             <i className="icon iconfont icon-guanzhu" />
-            <span className="text">关注(0)</span>
+            <span className="text">关注({totalInfo.followNum})</span>
           </div>
           <div className="" onClick={() => {
             this.switchUrl('/collect')
           }}>
             <i className="icon iconfont icon-shoucang" />
-            <span className="text">收藏(0)</span>
+            <span className="text">收藏({totalInfo.collectNum})</span>
           </div>
           <div className="" onClick={() => {
             this.switchUrl('/like')
           }}>
             <i className="icon iconfont icon-zan" />
-            <span className="text">点赞(0)</span>
+            <span className="text">点赞({totalInfo.likeNum})</span>
           </div>
           <div className="" onClick={() => {
             this.switchUrl('/point')
           }}>
             <i className="icon iconfont icon-diamond" />
-            <span className="text">积分(0)</span>
+            <span className="text">积分({totalInfo.pointNum})</span>
           </div>
         </div>
       </div>
@@ -118,6 +124,11 @@ export default class extends React.Component {
     const userInfo: any = store.get('userInfo');
     this.setState({
       userInfo
+    })
+    xzApi.getUserTotalInfo().then(res => {
+      this.setState({
+        totalInfo: res.data
+      })
     })
   }
 

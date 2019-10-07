@@ -54,7 +54,7 @@ export default class extends React.Component {
                 <div className="line" />
                 <div className="item-footer">
                   <div className="city">来自广州</div>
-                  <div className="btn-cancle">取消收藏</div>
+                  <div className="btn-cancle">取消点赞</div>
                 </div>
               </div>
             )
