@@ -1,6 +1,5 @@
 .page-welcome {
   width: 100%;
-  overflow: hidden;
 
   .divider {
     height: 8px;
@@ -54,12 +53,11 @@
   
   .slider-bg {
     position: absolute;
-    left: -25%;
     top: -44px;
-    width: 150%;
-    height: 110%;
-    border-bottom-left-radius: 100%;
-    border-bottom-right-radius: 100%;
+    width: 100%;
+    height: 120%;
+    border-bottom-left-radius: 150%;
+    border-bottom-right-radius: 150%;
     background-image: linear-gradient(0deg,#f1503b,#c82519 50%);
   }
 
@@ -97,5 +95,36 @@
     width: 40px;
     height: 40px;
     margin-top: 10px;
+  }
+
+  .mod-menu {
+    margin: 0 12px;
+    padding-bottom: 10px;
+    background: #fff;
+    border-radius: 6px;
+  }
+
+  .mod-cate {
+    z-index: 20;
+    position: sticky;
+    left: 0;
+    top: 0;
+    overflow: scroll;
+    width: 100%;
+    margin-top: 8px;
+    background: #fff;
+  }
+
+  .cate-list {
+    width: 300%;
+  }
+
+  .cate-item {
+    float: left;
+    padding: 10px 12px;
+  }
+
+  .g-list {
+    /* padding-top: 4px; */
   }
 }

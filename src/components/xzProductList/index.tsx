@@ -2,7 +2,11 @@ import * as React from 'react';
 import './index.css';
 import xzApi from '../../apis/xy';
 
-export default class extends React.Component {
+interface Props {
+  categoryId?: string|number
+}
+
+export default class extends React.Component<Props> {
   state = {
     list: []
   }
@@ -15,7 +19,9 @@ export default class extends React.Component {
         })
       }
     }
-    xzApi.getXzProductList().then(onFinish)
+    xzApi.getXzProductList({
+      categoryId: this.props.categoryId
+    }).then(onFinish)
   }
 
   public renderXzProductList = () => {

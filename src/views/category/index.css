@@ -1,3 +1,17 @@
 .page-category {
-  
+  .main {
+    overflow: hidden;
+    height: 100vh;
+  }
+  .menu {
+    overflow: scroll;
+    width: 90px;
+    height: 100%;
+    text-align: center;
+    background: #fff;
+  }
+  .menu-item {
+    height: 50px;
+    line-height: 50px;
+  }
 }

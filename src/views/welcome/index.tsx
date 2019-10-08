@@ -1,16 +1,18 @@
 import * as React from 'react';
-// import apis from '../../apis';
+import xzApi from '../../apis/xy';
 import './index.css';
 import Carousel from 'antd-mobile/lib/carousel';
 import { menuList, sliderList } from './menu.config';
 import Tabbar from '../../components/tabbar';
 import XzProductList from '../../components/xzProductList';
+import XzCategoryList from '../../components/xzCategoryList';
 
 export default class Welcome extends React.Component {
   public state = {
     list: [],
     data: ['1', '2', '3', '4'],
     imgHeight: 176,
+    cMenu: []
   }
 
   public componentDidMount () {
@@ -19,6 +21,11 @@ export default class Welcome extends React.Component {
         data: sliderList
       });
     }, 100);
+    xzApi.getXzCategorytList().then(res => {
+      this.setState({
+        cMenu: res.data.list
+      })
+    })
   }
 
   public renderList = () => {
@@ -103,7 +110,10 @@ export default class Welcome extends React.Component {
         {this.renderHeader()}
         {this.renderMainSlider()}
         {this.renderMenu()}
-        <div className="divider" />
+        <div className="mod-cate">
+        <XzCategoryList />
+        </div>
+        {/* <div className="divider" /> */}
         <XzProductList {...this.props} />
         <Tabbar {...this.props} activeKey="welcome" />
       </div>

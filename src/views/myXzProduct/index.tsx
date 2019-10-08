@@ -17,7 +17,7 @@ export default class extends React.Component {
         })
       }
     }
-    xzApi.getXzProductList().then(onFinish)
+    xzApi.getMyProduct().then(onFinish)
   }
 
   public renderXzProductList = () => {

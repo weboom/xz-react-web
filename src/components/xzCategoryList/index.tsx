@@ -1,6 +1,4 @@
 import * as React from 'react';
-import './index.css';
-import Tabbar from '../../components/tabbar';
 import xzApi from '../../apis/xy';
 
 export default class extends React.Component {
@@ -8,7 +6,7 @@ export default class extends React.Component {
     cMenu: []
   }
 
-  componentDidMount () {
+  public getXzCategorytList = () => {
     xzApi.getXzCategorytList().then(res => {
       this.setState({
         cMenu: res.data.list
@@ -16,30 +14,23 @@ export default class extends React.Component {
     })
   }
 
-  public renderMenu = () => {
+  componentDidMount () {
+    this.getXzCategorytList();
+  }
+
+  public render = () => {
     const cMenu: any[] = this.state.cMenu;
     return (
-      <div className="menu">
+      <div className="cate-list">
         {
           cMenu.map(item => {
             return (
-              <div className="menu-item" key={item.id}>
+              <div className="cate-item" key={item.id}>
                 { item.name }
               </div>
             )
           })
         }
-      </div>
-    )
-  }
-
-  render () {
-    return (
-      <div className="page-category">
-        <div className="main">
-          { this.renderMenu() }
-        </div>
-        <Tabbar { ...this.props } activeKey="category" />
       </div>
     )
   }

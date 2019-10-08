@@ -174,63 +174,6 @@ export default {
     return http.delete(`${host}/user/follow/${followId}`)
   },
 
-  // 需求模块 -----------------------------------------------------------------------------
-  // 创建需求
-  createDemand (params: any) {
-    return http.post(`${host}/demand`, {
-      ...params
-    })
-  },
-
-  // 需求详情
-  getDemandItem ({ itemId }: any) {
-    return http.get(`${host}/demand/${itemId}`)
-  },
-
-  /**
-   * @description: 报名
-   * @param {Number} param0 项目ID
-   */
-  createEnroll ({
-    projectId
-  }: any) {
-    return http.post(`${host}/enroll/?projectId=${projectId}`)
-  },
-
-  /**
-   * @description: 报名列表
-   * @param {Number} param0
-   */
-  getEnrollList ({
-    projectId
-  } : any) {
-    return http.get(`${host}/enroll/?projectId=${projectId}`)
-  },
-
-  /**
-   * @description: 报名状态
-   * @param {Number} param0
-   */
-  getEnrollStatus ({
-    projectId
-  }: any) {
-    return http.get(`${host}/enrollStatus?projectId=${projectId}`)
-  },
-
-  // 获取指定用户的报名项目
-  getUserEnrollList () {
-    return http.get(`${host}/userEnrollList`)
-  },
-
-  /**
-   * @description 获取当前用户所发布的需求
-   */
-  getUserCreateList (params: any) {
-    return http.get(`${host}/demand/getUserCreateList`, {
-      params
-    })
-  },
-
   /**
    * 发布闲置
    * @param params 
@@ -239,52 +182,57 @@ export default {
     return http.post(`${host}/xzProduct`, params)
   },
 
-    // 获取闲置商品
-    getXzProductList () {
-      const argv = arguments[0]
-      const categoryId = argv ? (argv.categoryId || '') : ''
-      return http.get(`${host}/xzProduct?categoryId=${categoryId}`)
-    },
+  /**
+   * @description 获取闲置商品
+   */
+  getXzProductList (params?: any) {
+    const argv = params
+    const categoryId = argv ? (argv.categoryId || '') : ''
+    return http.get(`${host}/xzProduct?categoryId=${categoryId}`)
+  },
+
+  /**
+   * @description 获取闲置商品详情
+   * @param itemId 
+   */
+  getXzProductItem (itemId: any) {
+    return http.get(`${host}/xzProduct/${itemId}`)
+  },
+
+  /**
+   * @description 创建 xzProduct
+   * @param params 
+   */
+  createXzProduct (params: object) {
+    return http.post(`${host}/xzProduct/`, params)
+  },
   
-    /**
-     * @description 获取闲置商品详情
-     * @param itemId 
-     */
-    getXzProductItem (itemId: any) {
-      return http.get(`${host}/xzProduct/${itemId}`)
-    },
+  /**
+   * @description 更新
+   * @param params
+   */
+  updateXzProduct (params: any) {
+    return http.post(`${host}/xzProduct/${params.itemId}`, params)
+  },
+
+  /**
+   * @description 获取我的 xzProduct
+   */
+  getMyProduct () {
+    return http.get(`${host}/user/xzProduct`)
+  },
+
+  /**
+   * @description 获取闲置商品分类
+   */
+  getXzCategorytList () {
+    return http.get(`${host}/xzCategory`)
+  },
   
-    /**
-     * @description 创建 xzProduct
-     * @param params 
-     */
-    createXzProduct (params: object) {
-      return http.post(`${host}/xzProduct/`, params)
-    },
-    
-    /**
-     * @description 更新
-     * @param params
-     */
-    updateXzProduct (params: any) {
-      return http.post(`${host}/xzProduct/${params.itemId}`, params)
-    },
-  
-    /**
-     * @description 获取我的 xzProduct
-     */
-    getMyProduct () {
-      return http.get(`${host}/user/xzProduct`)
-    },
-  
-    /**
-     * @description 获取闲置商品分类
-     */
-    getXzCategorytList () {
-      return http.get(`${host}/xzCategory`)
-    },
-    
-    getUserTotalInfo() {
-      return http.get(`${host}/user/totalInfo`)
-    }
+  /**
+   * @description 获取账户统计信息
+   */
+  getUserTotalInfo() {
+    return http.get(`${host}/user/totalInfo`)
+  }
 }

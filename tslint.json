@@ -14,6 +14,7 @@
     "member-access": false,
     "object-literal-sort-keys": false,
     "jsx-no-lambda": false,
-    "interface-name": [true, "never-prefix"]
+    "interface-name": [true, "never-prefix"],
+    "no-var-requires": false
   }
 }
