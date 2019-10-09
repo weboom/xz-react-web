@@ -80,7 +80,16 @@
       display: flex;
     }
     .act-item {
+      display: flex;
+      align-items: center;
       margin-right: 12px;
+      color: #333;
+      .icon {
+        margin-right: 4px;
+      }
+    }
+    .act-item-active {
+      color: #ff5722;
     }
     .btn-chat {
       padding: 6px 10px;

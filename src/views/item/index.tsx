@@ -1,27 +1,32 @@
 import * as React from 'react';
-// import { itemInfo } from './data';
 import Carousel from 'antd-mobile/lib/carousel';
 import xzApi from '../../apis/xy';
 import './index.css';
+const classnames = require('classnames')
+
+const XZ_PRODUCT_OBJECT_TYPE = 1;
+const COLLECT_TYPE = 1;
+const LIKE_TYPE = 2;
 
 export default class extends React.Component {
   state = {
-    itemInfo: null
+    itemInfo: null, // 商品信息
+    likeState: false,
+    collectState: false,
+    likeData: {},
+    collectData: {}
   }
 
   public renderBanner = () => {
     const itemInfo: any = this.state.itemInfo;
     const imgs: any[] = itemInfo.imgs;
-
     return (
       <Carousel autoplay={false} infinite>
         {imgs.map(val => (
           <div
             className="banner-slide"
             key={val}
-            style={{
-              backgroundImage: `url(${val})`
-            }}
+            style={{ backgroundImage: `url(${val})`}}
           />
         ))}
     </Carousel>
@@ -30,9 +35,85 @@ export default class extends React.Component {
 
   componentDidMount () {
     const xzProductId = (this.props as any).match.params.xzProductId
-    xzApi.getXzProductItem(xzProductId).then(res => {
+    if (xzProductId) {
+      xzApi.getXzProductItem(xzProductId).then(res => {
+        this.setState({
+          itemInfo: res.data
+        })
+      })
+      this.getLikeState();
+      this.getCollectState();
+    }
+  }
+
+  handleClickLike = () => {
+    if (this.state.likeState) {
+      xzApi.removeCollect({
+        recordId: (this.state.likeData as any).id
+      }).then(res => {
+        this.getLikeState()
+      })
+    } else {
+      const { xzProductId } = (this.props as any).match.params;
+      xzApi.addCollect({
+        itemId: xzProductId,
+        typeId: LIKE_TYPE,
+        objectId: XZ_PRODUCT_OBJECT_TYPE
+      }).then((res: any) => {
+        this.getLikeState()
+      })
+    }
+  }
+
+  handleClickCollect = () => {
+    if (this.state.collectState) {
+      xzApi.removeCollect({
+        recordId: (this.state.collectData as any).id
+      }).then(res => {
+        this.getCollectState()
+      })
+    } else {
+      const { xzProductId } = (this.props as any).match.params;
+      xzApi.addCollect({
+        itemId: xzProductId,
+        typeId: COLLECT_TYPE,
+        objectId: XZ_PRODUCT_OBJECT_TYPE
+      }).then((res: any) => {
+        this.getCollectState()
+      })
+    }
+  }
+
+  getLikeState = () => {
+    const { xzProductId } = (this.props as any).match.params
+    xzApi.getCollectState({
+      itemId: xzProductId,
+      typeId: LIKE_TYPE,
+      objectId: XZ_PRODUCT_OBJECT_TYPE
+    }).then((res: any) => {
+      if (!res || !res.success) {
+        return;
+      }
       this.setState({
-        itemInfo: res.data
+        likeState: !!res.data.status,
+        likeData: res.data
+      })
+    })
+  }
+
+  getCollectState = () => {
+    const { xzProductId } = (this.props as any).match.params
+    xzApi.getCollectState({
+      itemId: xzProductId,
+      typeId: COLLECT_TYPE,
+      objectId: XZ_PRODUCT_OBJECT_TYPE
+    }).then((res: any) => {
+      if (!res || !res.success) {
+        return;
+      }
+      this.setState({
+        collectState: !!res.data.status,
+        collectData: res.data
       })
     })
   }
@@ -66,16 +147,25 @@ export default class extends React.Component {
   }
 
   public renderFooter() {
+    const cls1 = classnames('act-item', {
+      'act-item-active': this.state.likeState
+    })
+    const cls2 = classnames('act-item', {
+      'act-item-active': this.state.collectState
+    })
     return (
       <div className="footer">
         <div className="act-list">
-          <div className="act-item">
+          <div className={cls1} onClick={this.handleClickLike}>
+            <i className="icon iconfont icon-zan" />
             <span>喜欢</span>
           </div>
-          <div className="act-item">
+          <div className={cls2} onClick={this.handleClickCollect}>
+            <i className="icon iconfont icon-shoucang" />
             <span>收藏</span>
           </div>
           <div className="act-item">
+            <i className="icon iconfont icon-comment" />
             <span>留言</span>
           </div>
         </div>
