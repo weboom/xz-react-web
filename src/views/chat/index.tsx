@@ -42,6 +42,8 @@ export default class extends React.Component {
       <div>
       <Tabs tabs={list}
         initialPage={0}
+        animated={true}
+        swipeable={false}
         tabBarUnderlineStyle={{
           border: 0,
           backgroundColor: 'transparent'

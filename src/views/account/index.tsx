@@ -125,10 +125,12 @@ export default class extends React.Component {
     this.setState({
       userInfo
     })
-    xzApi.getUserTotalInfo().then(res => {
-      this.setState({
-        totalInfo: res.data
-      })
+    xzApi.getUserTotalInfo().then((res: any) => {
+      if (res && res.success) {
+        this.setState({
+          totalInfo: res.data
+        })
+      }
     })
   }
 

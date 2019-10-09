@@ -12,7 +12,8 @@ export default class Welcome extends React.Component {
     list: [],
     data: ['1', '2', '3', '4'],
     imgHeight: 176,
-    cMenu: []
+    cMenu: [],
+    curCategoryId: 1
   }
 
   public componentDidMount () {
@@ -26,6 +27,11 @@ export default class Welcome extends React.Component {
         cMenu: res.data.list
       })
     })
+  }
+
+  handleClickXzProduct = (xzProductId: string) => {
+    const history: any = (this.props as any).history;
+    history.push(`/item/${xzProductId}`);
   }
 
   public renderList = () => {
@@ -48,7 +54,13 @@ export default class Welcome extends React.Component {
           {
             menuList.map((item, index) => {
               return (
-                <div className="menu-item" key={index}>
+                <div className="menu-item" key={index} onClick={() => {
+                  if (item.url) {
+                    if (item.url.indexOf('http') !== -1) {
+                      window.location.href = item.url
+                    }
+                  }
+                }}>
                   <img className="menu-icon" src={item.icon} alt=""/>
                   <span className="menu-name">{ item.name }</span>
                 </div>
@@ -79,18 +91,8 @@ export default class Welcome extends React.Component {
         <div className="slider-list">
           <Carousel autoplay={false} infinite cellSpacing={10}>
             {this.state.data.map(val => (
-              <a
-                key={val}
-                style={{
-                  display: 'inline-block',
-                  width: '100%',
-                  height: this.state.imgHeight
-                }}
-              >
-                <img
-                  src={val}
-                  style={{ width: '100%', verticalAlign: 'top' }}
-                />
+              <a key={val}>
+                <img className="slide-img" src={val}/>
               </a>
             ))}
           </Carousel>
@@ -111,10 +113,13 @@ export default class Welcome extends React.Component {
         {this.renderMainSlider()}
         {this.renderMenu()}
         <div className="mod-cate">
-        <XzCategoryList />
+          <XzCategoryList categoryId={this.state.curCategoryId} onClickItem={(categoryId) => {
+            this.setState({
+              curCategoryId: categoryId
+            })
+          }}/>
         </div>
-        {/* <div className="divider" /> */}
-        <XzProductList {...this.props} />
+        <XzProductList {...this.props} categoryId={this.state.curCategoryId}/>
         <Tabbar {...this.props} activeKey="welcome" />
       </div>
     )

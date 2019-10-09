@@ -7,6 +7,7 @@ import Button from 'antd-mobile/lib/button';
 import ImagePicker from 'antd-mobile/lib/image-picker';
 import xzApi from '../../apis/xy';
 import * as qiniu from 'qiniu-js';
+import XzCategoryPicker from '../../components/XzCategoryPicker';
 
 /**
  * @description 发布宝贝
@@ -19,6 +20,7 @@ export default class extends React.Component {
     price: '',
     desc: '',
     category: '',
+    categoryId: '',
     address: '',
     depreciation: '',
     token: '',
@@ -92,7 +94,6 @@ export default class extends React.Component {
       ...this.state,
       city: this.state.address,
       description: this.state.desc,
-      categoryId: 1,
       tradeWayId: 1,
       imgs: JSON.stringify(imgs),
       files: []
@@ -153,17 +154,6 @@ export default class extends React.Component {
               })
             }}
           />
-          
-          <InputItem
-            clear
-            placeholder="分类(有助于买家快速筛选)"
-            value={this.state.category}
-            onChange={(val) => {
-              this.setState({
-                category: val
-              })
-            }}
-          />
           <InputItem
             clear
             placeholder="宝贝所在城市"
@@ -182,6 +172,12 @@ export default class extends React.Component {
           selectable={files.length < 7}
           multiple={this.state.multiple}
         />
+        <XzCategoryPicker onClickItem={(categoryId) => {
+          console.log(categoryId);
+            this.setState({
+              categoryId
+            })
+          }}/>
         <div className="u-footer">
           <Button type="primary" onClick={ this.handleSave }>提交</Button>
         </div>

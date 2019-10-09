@@ -1,21 +1,27 @@
 export const menuList = [{
-  name: '二手手机',
-  icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t1/20983/16/10753/6124/5c8a16aaE5d6b15d7/01e0e818a7505267.png'
+  name: '爱回收',
+  icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t1/20983/16/10753/6124/5c8a16aaE5d6b15d7/01e0e818a7505267.png',
+  url: 'https://www.aihuishou.com/'
 }, {
-  name: '数码',
-  icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t1/39401/17/2391/5859/5cc06fcfE2ad40668/28cda0a571b4a576.png'
+  name: '转转',
+  icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t1/39401/17/2391/5859/5cc06fcfE2ad40668/28cda0a571b4a576.png',
+  url: 'https://m.zhuanzhuan.com/cycle/auction-series/index.html'
 }, {
-  name: '图书',
-  icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t1/17169/3/4127/4611/5c2f35cfEd87b0dd5/65c0cdc1362635fc.png'
+  name: '京东',
+  icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t1/17169/3/4127/4611/5c2f35cfEd87b0dd5/65c0cdc1362635fc.png',
+  url: 'https://m.jd.com/'
 }, {
-  name: '山货',
-  icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t17725/156/1767366877/17404/f45d418b/5ad87bf0N66c5db7c.png'
+  name: '京东到家',
+  icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t17725/156/1767366877/17404/f45d418b/5ad87bf0N66c5db7c.png',
+  url: 'https://daojia.jd.com/html/index.html?channel=jdapp#'
 }, {
-  name: '家电',
-  icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t18454/342/2607665324/6406/273daced/5b03b74eN3541598d.png'
+  name: '京东美妆',
+  icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t18454/342/2607665324/6406/273daced/5b03b74eN3541598d.png',
+  url: 'https://zpsy.jd.com/'
 }, {
-  name: '服饰',
-  icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t16990/157/2001547525/17770/a7b93378/5ae01befN2494769f.png'
+  name: '京东拼团',
+  icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t16990/157/2001547525/17770/a7b93378/5ae01befN2494769f.png',
+  url: 'https://wqs.jd.com/pingou/index.shtml'
 }, {
   name: '珠宝',
   icon: '//m.360buyimg.com/mobilecms/s120x120_jfs/t22228/270/207441984/11564/88140ab7/5b03fae3N67f78fe3.png'
