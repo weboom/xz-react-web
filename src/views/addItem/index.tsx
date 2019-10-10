@@ -7,7 +7,7 @@ import Button from 'antd-mobile/lib/button';
 import ImagePicker from 'antd-mobile/lib/image-picker';
 import xzApi from '../../apis/xy';
 import * as qiniu from 'qiniu-js';
-import XzCategoryPicker from '../../components/XzCategoryPicker';
+import XzCategoryPicker from '../../components/xzCategoryPicker';
 
 /**
  * @description 发布宝贝

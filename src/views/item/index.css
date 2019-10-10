@@ -101,6 +101,8 @@
   .mod-comment {
     margin-top: 8px;
     background: #fff;
+    font-size: 12px;
+    margin-bottom: 60px;
   }
 
   .mod__head {
@@ -122,5 +124,21 @@
     font-size: 12px;
     color: #999;
     margin-top: 20px;
+  }
+
+  .comment-child {
+    padding-left: 32px;
+  }
+
+  .sign-name {
+    color: #03a9f4;
+  }
+  .arrow-back {
+    z-index: 5;
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    font-size: 30px;
+    color: #333;
   }
 }

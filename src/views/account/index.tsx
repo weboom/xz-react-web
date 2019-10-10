@@ -125,6 +125,9 @@ export default class extends React.Component {
     this.setState({
       userInfo
     })
+  }
+
+  getTotalInfo = () => {
     xzApi.getUserTotalInfo().then((res: any) => {
       if (res && res.success) {
         this.setState({
@@ -142,6 +145,7 @@ export default class extends React.Component {
   public componentWillMount() {
     this.initUserInfo();
     this.getCheckin();
+    this.getTotalInfo();
   }
 
   public getCheckin = () => {
@@ -162,6 +166,7 @@ export default class extends React.Component {
         this.setState({
           checkState: true
         })
+        this.getTotalInfo();
       } else {
         Toast.fail(res.errMsg);
       }

@@ -1,0 +1,33 @@
+.talk-form {
+  z-index: 30;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: #fff;
+  box-sizing: border-box;
+  padding-left: 12px;
+  padding-right: 12px;
+  /* border-top: 1px solid #ddd; */
+  box-shadow: #333 10px 10px 10px 10px;
+  .input {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+  }
+  .am-textarea-control {
+    /* padding-left: 4px; */
+    /* padding-right: 4px; */
+  }
+  .btn-send {
+    margin-left: 10px;
+  }
+  .btn-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    padding-top: 20px;
+  }
+}

@@ -150,11 +150,12 @@ export default {
     return http.get(`${host}/comment?itemId=${itemId}&typeId=${typeId}`)
   },
   // 增加评论
-  addComment ({ itemId, content, talkTo, typeId }: any) {
+  addComment ({ itemId, content, talkTo, typeId, parentId }: any) {
     return http.post(`${host}/comment?itemId=${itemId}`, {
       talkTo,
       typeId,
-      content
+      content,
+      parentId
     })
   },
 

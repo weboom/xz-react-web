@@ -2,6 +2,8 @@ import * as React from 'react';
 import Carousel from 'antd-mobile/lib/carousel';
 import xzApi from '../../apis/xy';
 import './index.css';
+import TalkForm from '../../components/talkForm';
+import Comment from '../../components/comment';
 const classnames = require('classnames')
 
 const XZ_PRODUCT_OBJECT_TYPE = 1;
@@ -14,7 +16,11 @@ export default class extends React.Component {
     likeState: false,
     collectState: false,
     likeData: {},
-    collectData: {}
+    collectData: {},
+    talkVisible: false,
+    commentList: [],
+    talkInfo: null,
+    parentId: null
   }
 
   public renderBanner = () => {
@@ -33,6 +39,59 @@ export default class extends React.Component {
     )
   }
 
+  showTalk = () => {
+    this.setState({
+      talkVisible: true
+    })
+  }
+
+  hideTalk = () => {
+    this.setState({
+      talkVisible: false
+    })
+  }
+
+  addProductComment = (msg: string) => {
+    console.log(this.state.talkInfo);
+    // const talkInfo: any = this.state.talkInfo;
+    const xzProductId = (this.props as any).match.params.xzProductId
+    xzApi.addComment({
+      itemId: xzProductId,
+      content: msg,
+      // talkTo: talkInfo.uid,
+      typeId: 1,
+      talkTo: null,
+      parentId: null
+    }).then((res: any) => {
+      if (res && res.success) {
+        this.hideTalk();
+        this.getComment();
+      }
+    })
+  }
+
+  sendMessage = (msg: string) => {
+    if (!this.state.talkInfo) {
+      this.addProductComment(msg);
+      return;
+    }
+    console.log(this.state.talkInfo);
+    const talkInfo: any = this.state.talkInfo;
+    // const xzProductId = (this.props as any).match.params.xzProductId
+    xzApi.addComment({
+      // itemId: xzProductId,
+      content: msg,
+      talkTo: talkInfo.uid,
+      typeId: 1,
+      parentId: this.state.parentId
+    }).then((res: any) => {
+      if (res && res.success) {
+        this.hideTalk();
+        this.getComment();
+      }
+    })
+  }
+
   componentDidMount () {
     const xzProductId = (this.props as any).match.params.xzProductId
     if (xzProductId) {
@@ -43,7 +102,21 @@ export default class extends React.Component {
       })
       this.getLikeState();
       this.getCollectState();
+      this.getComment();
     }
+  }
+
+  getComment = () => {
+    const xzProductId = (this.props as any).match.params.xzProductId
+    xzApi.getComment({
+      itemId: xzProductId,
+      typeId: XZ_PRODUCT_OBJECT_TYPE
+    }).then((res: any) => {
+      console.log(res);
+      this.setState({
+        commentList: res.data.list
+      })
+    })
   }
 
   handleClickLike = () => {
@@ -164,7 +237,11 @@ export default class extends React.Component {
             <i className="icon iconfont icon-shoucang" />
             <span>收藏</span>
           </div>
-          <div className="act-item">
+          <div className="act-item" onClick={() => {
+            this.setState({
+              talkVisible: !this.state.talkVisible
+            })
+          }}>
             <i className="icon iconfont icon-comment" />
             <span>留言</span>
           </div>
@@ -174,6 +251,14 @@ export default class extends React.Component {
     )
   }
 
+  confirmTalkInfo = (obj: any, parentId: number) => {
+    this.setState({
+      talkInfo: obj,
+      parentId
+    })
+    this.showTalk();
+  }
+
   public renderComment() {
     return (
       <div className="mod-comment">
@@ -181,7 +266,28 @@ export default class extends React.Component {
           <span>留言</span>
         </div>
         <div className="mod__body">
-          <span className="zero-text">暂无留言</span>
+          {
+            this.state.commentList.length ? (
+              this.state.commentList.map((item: any) => {
+                return (
+                  <div key={item.id}>
+                    <Comment key={item.id} commentInfo={item} onClickReply={this.confirmTalkInfo}/>
+                    <div className="comment-child">
+                      {
+                        item.children.map((citem: any) => {
+                          return (
+                            <Comment key={citem.id} parent={item} onClickReply={this.confirmTalkInfo} commentInfo={citem} />
+                          )
+                        })
+                      }
+                    </div>
+                  </div>
+                )
+              })
+            ) : (
+              <span className="zero-text">暂无留言</span>
+            )
+          }
         </div>
       </div>
     )
@@ -191,13 +297,20 @@ export default class extends React.Component {
     if (this.state.itemInfo) {
       return (
         <div className="page-product">
-          <div>
-            { this.renderBanner() }
-            { this.renderGInfo() }
-            { this.renderUserInfo() }
-            { this.renderFooter() }
-            { this.renderComment() }
-          </div>
+          <i
+            onClick={() => {
+              console.log(this.props);
+              (this.props as any).history.goBack();
+            }}
+          className="arrow-back icon iconfont icon-arrow-back" />
+          { this.renderBanner() }
+          { this.renderGInfo() }
+          { this.renderUserInfo() }
+          { this.renderFooter() }
+          { this.renderComment() }
+          { this.state.talkVisible ? (
+            <TalkForm hide={this.hideTalk} show={this.showTalk} send={this.sendMessage}/>
+          ) : null }
         </div>
       );
     } else {
