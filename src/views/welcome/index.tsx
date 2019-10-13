@@ -77,7 +77,7 @@ export default class Welcome extends React.Component {
       <div className="mod-search">
         <div className="search-box">
           <img className="icon-menu" src={require('../../assets/img/menu.png')} alt=""/>
-          <span className="search-text">输入关键词</span>
+          <span className="search-text" onClick={this.navigateToSearch}>输入关键词</span>
           <span className="search-btn">扫一扫</span>
         </div>
       </div>
@@ -104,6 +104,11 @@ export default class Welcome extends React.Component {
   public navigateToItem = () => {
     const history: any = (this.props as any).history;
     history.push('/item');
+  }
+
+  public navigateToSearch = () => {
+    const history: any = (this.props as any).history;
+    history.push('/search');
   }
 
   public render () {

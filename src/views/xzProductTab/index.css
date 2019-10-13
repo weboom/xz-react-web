@@ -1,0 +1,5 @@
+.page-chat {
+  .tab-screen {
+    min-height: calc(100vh - 40px);
+  }
+}
