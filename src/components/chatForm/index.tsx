@@ -15,7 +15,7 @@ export default class extends React.Component<Prop> {
   }
   render() {
     return (
-      <div className="talk-form">
+      <div className="chat-form">
         <div className="input">
           <TextareaItem
             placeholder="输入内容"
@@ -27,12 +27,9 @@ export default class extends React.Component<Prop> {
             ref={(el: any) => this.customFocusInst = el}
           />
         </div>
-        <div className="btn-list">
-          <div className="btn-back" onClick={this.props.hide}>取消</div>
-          <div className="btn-send" onClick={() => {
-            this.props.send(this.state.content)
-          }}>发送</div>
-        </div>
+        <div className="btn-send" onClick={() => {
+          this.props.send(this.state.content)
+        }}>发送</div>
       </div>
     )
   }

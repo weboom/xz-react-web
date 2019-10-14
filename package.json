@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@types/axios": "^0.14.0",
+    "@types/classnames": "^2.2.9",
     "@types/js-cookie": "^2.2.2",
     "@types/qiniu-js": "^2.5.0",
     "@types/qs": "^6.5.3",

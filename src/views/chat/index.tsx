@@ -18,8 +18,14 @@ class Chat extends React.Component {
   componentDidMount () {
     (this.props as any).initSocket();
     (this.props as any).getChatList();
-    console.log(this)
-    console.log(initSocket);
+  }
+
+  getLastMsg = (user: any) => {
+    const key = 'content';
+    if ((this.props as any).chat.msgGroup[user.id]) {
+      return (this.props as any).chat.msgGroup[user.id][0][key];
+    }
+    return ''
   }
 
   renderUserList = () => {
@@ -35,8 +41,8 @@ class Chat extends React.Component {
                 }}>
                   <img className="avatar" src={item.avatar} />
                   <div>
-                    <div className="name">{item.nickname}</div>
-                    <div className="msg">晚上来我家啊</div>
+                    <div className="name">{item.nickname || '匿名用户'}</div>
+                    <div className="msg">{this.getLastMsg(item)}</div>
                   </div>
                 </div>
               )

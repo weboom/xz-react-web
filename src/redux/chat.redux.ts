@@ -3,9 +3,10 @@ import { wsHost } from '../config';
 import store from 'store';
 import xzApi from '../apis/xy';
 
-// browser
 const LOAD_USER_DATA = Symbol();
 const GET_ALL_MSG = Symbol();
+const HANDLE_NEW_MSG = Symbol();
+
 let socketInstance: any = null;
 
 // 排序
@@ -76,12 +77,49 @@ export function chat(state = initState, action: any) {
         ...data
       };
     case GET_ALL_MSG:
-      const { msgObj, msgList, userList } = action.payload
       return {
         ...state,
-        msgList,
+        msgList: action.payload.msgList,
+        userList: action.payload.userList,
+        msgGroup: action.payload.msgObj,
+      }
+    case HANDLE_NEW_MSG:
+      const userInfo = store.get('userInfo');
+      let msg: any = action.payload.msg;
+      msg = msg.data.payload;
+  
+      let userList: any[] = [].concat((state).userList);
+      const msgList: any[] = [].concat(state.msgList);
+  
+      // 判断发消息的人是否在userList中
+      const index = userList.findIndex((element: any) => {
+        return +element.id === +msg.from;
+      });
+      if (index === -1 && (+msg.from !== +userInfo.id)) {
+        userList.push(msg.userInfo);
+      }
+      msgList.push(msg);
+  
+      const group = makeMsgGroup({
+        userInfo,
+        msgList
+      });
+  
+      userList = sortUserList({
         userList,
-        msgGroup: msgObj
+        msgGroup: group
+      });
+
+      setTimeout(() => {
+        window.document.documentElement.scrollTop = 10000;
+        window.document.body.scrollTop = 10000;
+      }, 600)
+
+      return {
+        ...state,
+        userList,
+        msgList,
+        msgGroup: group
       }
     default:
       return state
@@ -108,48 +146,14 @@ export function initSocket() {
     })
     // 监听消息
     socket.on(`sendMsg_${userInfo.id}`, (msg: any) => {
-      handleNewMsg({ msg })
+      dispatch({
+        type: HANDLE_NEW_MSG,
+        payload: {
+          msg
+        }
+      })
     });
     socketInstance = socket;
-  }
-}
-
-export function handleNewMsg({ msg }: any) {
-  return (dispatch: any) => {
-    const userInfo = store.get('userInfo');
-    const { payload } = msg.data;
-    console.log(userInfo);
-    console.log(payload);
-    console.log(sortUserList);
-    console.log(makeMsgGroup)
-    console.log(socketInstance);
-
-    // let userList = [].concat((state).userList);
-    // let msgList = [].concat(state.msgList);
-
-    // // 判断发消息的人是否在userList中
-    // let index = userList.findIndex(element => +element.id === +payload.from);
-    // if (index === -1 && (+payload.from !== +userInfo.id)) {
-    //   userList.push(payload.userInfo);
-    // }
-    // msgList.push(payload);
-
-    // let group = makeMsgGroup({
-    //   userInfo,
-    //   msgList
-    // });
-
-    // userList = sortUserList({
-    //   userList,
-    //   msgGroup: group
-    // });
-
-    // dispatch('scrollToLast');
-    // commit('getAllMsg', {
-    //   msgObj: group,
-    //   msgList,
-    //   userList
-    // });
   }
 }
 
@@ -182,4 +186,18 @@ export function getChatList() {
       }
     })
   }  
+}
+
+export function sendMsg({ to, content }: any) {
+  return (dispatch: any) => {
+    const userInfo = store.get('userInfo');
+    to = +to;
+    socketInstance.emit('sendMsg', {
+      payload: {
+        to,
+        content,
+        from: +userInfo.id
+      }
+    });
+  }
 }

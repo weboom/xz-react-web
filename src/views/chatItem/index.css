@@ -1,15 +1,10 @@
-.page-chat {
+.page-chat-item {
   .tab-screen {
     min-height: calc(100vh - 40px);
   }
   .chat-list {
     overflow: hidden;
-  }
-  .chat-item {
-    display: flex;
-    padding: 10px;
-    background: #fff;
-    border-bottom: 1px solid #eee;
+    padding-bottom: 60px;
   }
   .avatar {
     width: 40px;
@@ -25,5 +20,34 @@
   .item-name {
     font-size: 14px;
     margin-bottom: 4px;
+  }
+  .chat-item {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 10px;
+    font-size: 12px;
+    margin-top: 20px;
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .msg-content {
+      color: #fff;
+      background-color: #19a9ea;
+      border-radius: 4px;
+      max-width: 180px;
+      line-height: 1.5;
+      padding: 10px;
+    }
+  }
+  .chat-item-left {
+    flex-direction: row-reverse;
+    .avatar {
+      margin-left: 6px;
+      margin-right: 0;
+    }
   }
 }

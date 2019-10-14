@@ -1,0 +1,21 @@
+.chat-form {
+  z-index: 30;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  box-sizing: border-box;
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  align-items: center;
+  .input {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+  }
+  .btn-send {
+    margin-left: 10px;
+  }
+}

@@ -6,6 +6,7 @@ import List from 'antd-mobile/lib/list';
 import xzApi from '../../apis/xy';
 import * as store from 'store';
 import Toast from 'antd-mobile/lib/toast';
+import LoginPop from '../../components/loginPop';
 
 const Item = List.Item;
 
@@ -29,6 +30,9 @@ export default class extends React.Component {
       <div className="mod-banner">
         <div className="user-cover-wrap">
           <div className="user-cover" />
+        </div>
+        <div>
+          <LoginPop />
         </div>
         <div className="user-box">
           <img className="user-avatar" src={
