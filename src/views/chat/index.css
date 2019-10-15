@@ -26,4 +26,16 @@
     font-size: 14px;
     margin-bottom: 4px;
   }
+  .login-tip {
+    text-align: center;
+    width: 150px;
+    height: 44px;
+    line-height: 44px;
+    margin: 0 auto;
+    margin-top: 50%;
+    background: #f44336;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 2px;
+  }
 }

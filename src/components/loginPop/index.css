@@ -1,3 +1,30 @@
-.page-login {
-  
+.login-pop {
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  /* background: #fff; */
+  background-color: #f4f7f9;
+
+  .login-form {
+    padding: 0 24px;
+    padding-top: 80px;
+
+    .btn-submit {
+      margin-top: 30px;
+    }
+  }
+
+  .am-list-item.am-input-item {
+    /* padding-left: 0; */
+  }
+  .btm-act {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    color: #666;
+  }
 }

@@ -3,6 +3,8 @@ import api from '../apis/xy';
 
 const ERROR = Symbol();
 const LOAD_USER_DATA = Symbol();
+const SHOW_LOGIN = Symbol();
+const CLOSE_LOGIN = Symbol();
 
 let userInfo = store.get('userInfo');
 try {
@@ -15,7 +17,8 @@ try {
 
 // initial state
 const initState = {
-  ...userInfo
+  ...userInfo,
+  showLogin: false
 };
 
 // reducer
@@ -30,6 +33,16 @@ export function user(state = initState, action: any) {
       return {
         ...data
       };
+    case SHOW_LOGIN: 
+      return {
+        ...state,
+        showLogin: true
+      }
+    case CLOSE_LOGIN:
+      return {
+        ...state,
+        showLogin: false
+      }
     default:
       return state
   }

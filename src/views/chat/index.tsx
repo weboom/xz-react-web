@@ -3,6 +3,7 @@ import './index.css';
 import Tabbar from '../../components/tabbar';
 import { connect } from 'react-redux'
 import { initSocket, getChatList } from "../../redux/chat.redux"
+import cookie from 'js-cookie';
 
 const mapStateToProps = (state: any) => state;
 const mapDispatchToProps = {
@@ -12,12 +13,19 @@ const mapDispatchToProps = {
 
 class Chat extends React.Component {
   state = {
-    cMenu: []
+    cMenu: [],
+    token: ''
   }
 
   componentDidMount () {
-    (this.props as any).initSocket();
-    (this.props as any).getChatList();
+    const token = cookie.get('token');
+    this.setState({
+      token
+    })
+    if (cookie) {
+      (this.props as any).initSocket();
+      (this.props as any).getChatList();
+    }
   }
 
   getLastMsg = (user: any) => {
@@ -55,7 +63,18 @@ class Chat extends React.Component {
   render () {
     return (
       <div className="page-chat">
-        { this.renderUserList() }
+        {
+          this.state.token ? this.renderUserList() : (
+            <div className="login-tip" onClick={() => {
+              console.log(this.props);
+              const props: any = this.props;
+              const url = props.location.pathname + props.location.search;
+              (this.props as any).history.push(`/login?redirect=${encodeURIComponent(url)}`)
+            }}>
+              <span>请先登录</span>
+            </div>
+          )
+        }
         <Tabbar {...this.props} activeKey="chat"/>
       </div>
     )

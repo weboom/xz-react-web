@@ -6,8 +6,8 @@ import List from 'antd-mobile/lib/list';
 import xzApi from '../../apis/xy';
 import * as store from 'store';
 import Toast from 'antd-mobile/lib/toast';
-import LoginPop from '../../components/loginPop';
-
+// import Base from '../../components/baseComponent'  
+// import LoginPop from '../../components/loginPop';
 const Item = List.Item;
 
 export default class extends React.Component {
@@ -32,7 +32,7 @@ export default class extends React.Component {
           <div className="user-cover" />
         </div>
         <div>
-          <LoginPop />
+          {/* <LoginPop /> */}
         </div>
         <div className="user-box">
           <img className="user-avatar" src={
@@ -53,7 +53,9 @@ export default class extends React.Component {
                 </div>
               </div>
             ) : (
-              <div onClick={this.handleLogin}>立即登录</div>
+              <div onClick={() => {
+                (this.props as any).history.push('/login');
+              }}>立即登录</div>
             )
           }
         </div>
@@ -106,22 +108,6 @@ export default class extends React.Component {
         </List>
       </div>
     )
-  }
-
-  public handleLogin = () => {
-    const onSuccess = (res: any) => {
-      if (res && res.success) {
-        this.setState({
-          userInfo: res.data
-        })
-        store.set('userInfo', res.data);
-        store.set('token', res.data.token);
-      }
-    }
-    xzApi.login({
-      mobile: '13249064450',
-      password: '123456'
-    }).then(onSuccess)
   }
 
   public initUserInfo = () => {
