@@ -36,20 +36,6 @@ ReactDOM.render(
           })
         }
       </Switch>
-      {/* <Route path="/" exact component={Welcome} />
-      <Route path="/item/:xzProductId" exact component={Item} />
-      <Route path="/account" exact component={Account} />
-      <Route path="/category" exact component={Category} />
-      <Route path="/chat" exact component={Chat} />
-      <Route path="/chat/:chatId" exact component={ChatItem} />
-      <Route path="/point" exact component={Point} />
-      <Route path="/collect" exact component={Collect} />
-      <Route path="/like" exact component={Like} />
-      <Route path="/follow" exact component={Follow} />
-      <Route path="/addItem" exact component={AddItem} />
-      <Route path="/myXzProduct" exact component={MyXzProduct} />
-      <Route path="/search" exact component={Search} />
-      <Route path="/app" exact component={App} /> */}
     </BrowserRouter>
   </Provider>,
   document.getElementById('root') as HTMLElement
