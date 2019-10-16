@@ -235,5 +235,13 @@ export default {
    */
   getUserTotalInfo() {
     return http.get(`${host}/user/totalInfo`)
+  },
+
+  /**
+   * @description 关键词搜索
+   * @param param0 
+   */
+  getXzProductByKey({ key }: any) {
+    return http.get(`${host}/xzProduct/search?keyword=${key}`)
   }
 }
