@@ -3,15 +3,16 @@ import './index.css';
 import apis from '../../apis';
 import Button from 'antd-mobile/lib/button';
 import Navbar from '../../components/navbar';
+import AddShipping from '../../components/addAddress';
 
 export default class Shipping extends React.Component {
   state = {
-    list: []
+    list: [],
+    editVisible: false
   }
 
   componentDidMount () {
     apis.getdeliveryAddressList().then((res: any) => {
-      console.log(res);
       this.setState({
         list: res.data.list
       })
@@ -59,7 +60,22 @@ export default class Shipping extends React.Component {
           (this.props as any).history.goBack();
         }}/>
         { this.renderList() }
-        <div className="footer u-footer">
+        {
+          this.state.editVisible ? (
+            <div className="edit-address-pop">
+              <AddShipping close={() => {
+                this.setState({
+                  editVisible: false
+                })
+              }}/>
+            </div>
+          ) : null
+        }
+        <div className="footer u-footer" onClick={()=> {
+          this.setState({
+            editVisible: true
+          })
+        }}>
           <span>新建收货地址</span>
         </div>
 			</div>

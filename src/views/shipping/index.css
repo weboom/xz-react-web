@@ -1,4 +1,13 @@
 .page-shipping {
+  .edit-address-pop {
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #eee;
+  }
   .footer {
     position: fixed;
     bottom: 0;
