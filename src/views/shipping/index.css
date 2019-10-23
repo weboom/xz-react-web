@@ -1,0 +1,65 @@
+.page-shipping {
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    height: 48px;
+    line-height: 48px;
+    font-weight: 700;
+    color: #fff;
+    padding: 0;
+    text-align: center;
+    background: #07c160;
+  }
+  .list {
+    padding-bottom: 60px;
+  }
+	.item {
+    margin-bottom: 10px;
+    background: #fff;
+    &__hd {
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      line-height: 20px;
+      padding: 10px 12px;
+      font-weight: 700;
+      .name {
+        margin-right: 10px;
+      }
+      .remark {
+        font-size: 12px;
+        font-weight: 400;
+        padding: 2px 6px;
+        margin-left: 10px;
+        color: #fff;
+        background: #07c160;
+        border-radius: 2px;
+      }
+    }
+    .item__bd {
+      font-size: 14px;
+      line-height: 20px;
+      padding: 10px 12px;
+      color: #666;
+      border-top: 1px solid #f5f5f5;
+    }
+    .item__ft {
+      overflow: hidden;
+      padding: 10px 12px;
+      border-top: 1px solid #f5f5f5;
+      text-align: right;
+      .act {
+        display: inline-block;
+        font-size: 14px;
+        margin-left: 8px;
+      }
+      .am-button {
+        font-size: 14px;
+      }
+    }
+  }
+}

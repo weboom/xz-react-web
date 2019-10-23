@@ -1,2 +1,25 @@
 .page-about {
+	.page__body {
+		font-size: 12px;
+		line-height: 1.8;
+		padding: 12px;
+		color: #666;
+		text-align: justify;
+	}
+
+	.icon-footer {
+		position: fixed;
+		width: 100%;
+		height: 62px;
+		margin: 0 auto;
+		left: 0;
+		bottom: 0;
+	}
+
+	.icon-banner {
+		display: block;
+		width: 100%;
+		height: 100px;
+		margin-bottom: 20px;
+	}
 }

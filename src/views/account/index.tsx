@@ -6,8 +6,7 @@ import List from 'antd-mobile/lib/list';
 import xzApi from '../../apis/xy';
 import * as store from 'store';
 import Toast from 'antd-mobile/lib/toast';
-// import Base from '../../components/baseComponent'  
-// import LoginPop from '../../components/loginPop';
+
 const Item = List.Item;
 
 export default class extends React.Component {
@@ -30,9 +29,6 @@ export default class extends React.Component {
       <div className="mod-banner">
         <div className="user-cover-wrap">
           <div className="user-cover" />
-        </div>
-        <div>
-          {/* <LoginPop /> */}
         </div>
         <div className="user-box">
           <img className="user-avatar" src={
@@ -100,10 +96,10 @@ export default class extends React.Component {
             this.switchUrl('/myXzProduct');
           }}>我的发布</Item>
           <Item arrow="horizontal" onClick={() => {
-            console.log(2);
+            this.switchUrl('/shipping');
           }}>地址管理</Item>
           <Item arrow="horizontal" onClick={() => {
-            console.log(2);
+            this.switchUrl('/about');
           }}>关于我们</Item>
         </List>
       </div>

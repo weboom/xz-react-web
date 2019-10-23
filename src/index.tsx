@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+
 import './assets/style/reset.css';
 import 'antd-mobile/dist/antd-mobile.css';
 

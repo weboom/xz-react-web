@@ -12,6 +12,8 @@ import MyXzProduct from './views/myXzProduct';
 import Search from './views/search';
 import ChatItem from './views/chatItem';
 import LoginPop from './components/loginPop';
+import About from './views/about';
+import Shipping from './views/shipping';
 
 export default [
   {
@@ -23,6 +25,11 @@ export default [
     path: '/account',
     name: 'Account',
     component: Account
+  },
+  {
+    path: '/Shipping',
+    name: 'Shipping',
+    component: Shipping
   },
   {
     path: '/item/:xzProductId',
@@ -83,5 +90,10 @@ export default [
     path: '/LoginPop',
     name: 'LoginPop',
     component: LoginPop
+  },
+  {
+    path: '/About',
+    name: 'About',
+    component: About
   }
 ]
