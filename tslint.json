@@ -15,6 +15,7 @@
     "object-literal-sort-keys": false,
     "jsx-no-lambda": false,
     "interface-name": [true, "never-prefix"],
-    "no-var-requires": false
+    "no-var-requires": false,
+    "member-ordering": false
   }
 }

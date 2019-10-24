@@ -13,7 +13,6 @@ import XzCategoryPicker from '../../components/xzCategoryPicker';
  * @description 发布宝贝
  * @author Gaollard
  */
-
 export default class extends React.Component {
   state = {
     title: '',
