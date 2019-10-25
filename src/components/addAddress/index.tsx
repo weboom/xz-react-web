@@ -5,12 +5,12 @@ import Button from 'antd-mobile/lib/button';
 import Navbar from '../../components/navbar';
 import Picker from 'antd-mobile/lib/picker';
 import List from 'antd-mobile/lib/list';
-import apis from '../../apis';
+import apis from '../../apis/xy';
 import Toast from 'antd-mobile/lib/toast';
 
 interface Prop {
   close(): void,
-  address?: object|null
+  address?: any
 }
 
 export default class extends React.Component<Prop, {}> {
@@ -35,8 +35,14 @@ export default class extends React.Component<Prop, {}> {
         sfCityList: list
       })
     })
-    if (this.props.address) {
-      console.log(this.props.address);
+    const address: any = this.props.address
+    if (address) {
+      this.setState({
+        ...address,
+        pickerValue: [address.province_code, address.city_code, address.district_code]
+      }, () => {
+        console.log(this.state);
+      })
     }
   }
 
@@ -59,16 +65,31 @@ export default class extends React.Component<Prop, {}> {
   }
 
   handleSubmit = () => {
+    console.log(this.state);
     const cityValue = this.rawData();
-    apis.addAddress({
+    const params: any = {
       address: this.state.address,
       mobile: this.state.mobile,
       username: this.state.username,
       province: cityValue[0].label,
       city: cityValue[1].label,
       district: cityValue[2] ? cityValue[2].label : '',
-      zip: 8000
-    }).then((res: any) => {
+      zip: 7000,
+      provinceCode: this.state.pickerValue[0],
+      cityCode: this.state.pickerValue[1],
+      districtCode: this.state.pickerValue[2] || ''
+    }
+    if (this.props.address) {
+      params.id = this.props.address.id
+      apis.updateAddress(params).then((res: any) => {
+        if (res.success) {
+          Toast.success('操作成功');
+          this.props.close();
+        }
+      })
+      return;
+    }
+    apis.addAddress(params).then((res: any) => {
       if (res.success) {
         Toast.success('操作成功');
         this.props.close();
@@ -84,7 +105,9 @@ export default class extends React.Component<Prop, {}> {
           this.state.sfCityList.length ? (
             <Picker
             cascade={true}
-            extra="请选择(可选)"
+            extra={this.state.pickerValue.length ? (
+              this.state.province + this.state.city + this.state.district
+            ) : '请选择'}
             visible={this.state.visible}
             data={this.state.sfCityList}
             value={this.state.pickerValue}

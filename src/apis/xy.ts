@@ -118,8 +118,12 @@ export default {
     city,
     province,
     district,
-    zip
+    zip,
+    provinceCode,
+    cityCode,
+    districtCode
   }: any) {
+    console.log(provinceCode, cityCode, districtCode)
     return http.post(`${host}/deliveryAddress`, {
       address,
       mobile,
@@ -128,12 +132,23 @@ export default {
       city,
       province,
       district,
-      zip
+      zip,
+      provinceCode,
+      cityCode,
+      districtCode
     })
   },
 
   removeAddress ({ id }: any) {
     return http.delete(`${host}/deliveryAddress/${id}`)
+  },
+
+  /**
+   * @description 修改地址
+   * @param params 
+   */
+  updateAddress (params: any) {
+    return http.post(`${host}/deliveryAddress/${params.id}`, params)
   },
 
   register ({ mobile, password }: any) {
