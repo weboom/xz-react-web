@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './index.css';
 import Tabbar from '../../components/tabbar';
-import Tabs from 'antd-mobile/lib/tabs';
+import { Tabs } from 'antd-mobile';
 import xzApi from '../../apis/xy';
 import XzProductList from '../../components/xzProductList'
 

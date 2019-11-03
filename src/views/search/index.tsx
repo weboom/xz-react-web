@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './index.css';
 import xzApi from '../../apis/xy';
-import InputItem from 'antd-mobile/lib/input-item';
+import { InputItem } from 'antd-mobile';
 
 interface MState {
   list: any[],

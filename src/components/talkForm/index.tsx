@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './index.css';
-import TextareaItem from 'antd-mobile/lib/textarea-item';
+import { TextareaItem } from 'antd-mobile';
 
 interface Prop {
   hide?(): any,

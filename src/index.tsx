@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import './assets/style/reset.css';
-import 'antd-mobile/dist/antd-mobile.css';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
@@ -13,6 +12,8 @@ import reducers from './redux/reducers'
 import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
 import {createStore, applyMiddleware, compose} from 'redux'
+
+// import TestApp from './test/index';
 
 const store = createStore(reducers, compose(
   applyMiddleware(thunk), (window as any).devToolsExtension
@@ -50,5 +51,10 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root') as HTMLElement
 );
+
+// ReactDOM.render(
+//   <TestApp />,
+//   document.getElementById('root') as HTMLElement
+// );
 
 registerServiceWorker();

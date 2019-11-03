@@ -1,12 +1,8 @@
 import * as React from 'react';
 import './index.css';
-import InputItem from 'antd-mobile/lib/input-item';
-import Button from 'antd-mobile/lib/button';
 import Navbar from '../../components/navbar';
-import Picker from 'antd-mobile/lib/picker';
-import List from 'antd-mobile/lib/list';
 import apis from '../../apis/xy';
-import Toast from 'antd-mobile/lib/toast';
+import { Toast, Picker, Button, InputItem, List } from 'antd-mobile';
 
 interface Prop {
   close(): void,

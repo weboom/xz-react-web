@@ -2,7 +2,7 @@ import * as React from 'react';
 import './index.css';
 import Navbar from '../../components/navbar';
 import xzApi from '../../apis';
-import Toast from 'antd-mobile/lib/toast';
+import { Toast } from 'antd-mobile';
 
 /**
  * @description 我的积分

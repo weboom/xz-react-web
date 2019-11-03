@@ -1,8 +1,6 @@
-// import { NavBar, Icon } from 'antd-mobile';
-import NavBar from 'antd-mobile/lib/nav-bar';
-import Icon from 'antd-mobile/lib/icon';
 import * as React from 'react'
 import './index.css';
+import { NavBar, Icon } from 'antd-mobile';
 
 interface Props {
   title: string,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { /*Route,*/ Redirect, withRouter } from 'react-router-dom';
+import { /*Route,*/ Redirect, /*withRouter*/ } from 'react-router-dom';
 
 class AuthLogin extends React.Component {
   state = {
@@ -34,4 +34,4 @@ class AuthLogin extends React.Component {
   }
 }
 
-export default withRouter(AuthLogin);
+export default AuthLogin;

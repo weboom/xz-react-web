@@ -1,11 +1,9 @@
 import * as React from 'react';
 import './index.css';
+import { Icon, List, Toast } from 'antd-mobile';
 import Tabbar from '../../components/tabbar';
-import Icon from 'antd-mobile/lib/icon';
-import List from 'antd-mobile/lib/list';
 import xzApi from '../../apis/xy';
 import * as store from 'store';
-import Toast from 'antd-mobile/lib/toast';
 
 const Item = List.Item;
 

@@ -1,6 +1,4 @@
-// import { NavBar, Icon } from 'antd-mobile';
-import NavBar from 'antd-mobile/lib/nav-bar';
-import Icon from 'antd-mobile/lib/icon';
+import { Icon, NavBar } from 'antd-mobile';
 import * as React from 'react'
 import './index.css';
 
@@ -11,7 +9,7 @@ interface Props {
 }
 
 export default class extends React.Component<Props> {
-  render () {
+  render() {
     return (
       <div className="navbar">
         <NavBar

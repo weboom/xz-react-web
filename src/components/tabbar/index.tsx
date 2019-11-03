@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TabBar from 'antd-mobile/lib/tab-bar';
+import { TabBar } from 'antd-mobile';
 import './index.css';
 
 export interface Props {

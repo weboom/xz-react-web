@@ -1,7 +1,7 @@
 import * as React from 'react';
 import xzApi from '../../apis/xy';
 import './index.css';
-import Carousel from 'antd-mobile/lib/carousel';
+import { Carousel } from 'antd-mobile';
 import { menuList, sliderList } from './menu.config';
 import Tabbar from '../../components/tabbar';
 import XzProductList from '../../components/xzProductList';

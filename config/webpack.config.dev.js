@@ -13,6 +13,7 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const px2rem = require('postcss-px2rem');
+const tsImportPluginFactory = require('ts-import-plugin')
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -146,9 +147,6 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              "plugins": [
-                ["import", {libraryName: "antd-mobile", style: "css" }]
-              ],
               compact: true,
             },
           },
@@ -163,6 +161,15 @@ module.exports = {
                 options: {
                   // disable type checker - we will use it in fork plugin
                   transpileOnly: true,
+                  getCustomTransformers: () => ({
+                    before: [
+                      tsImportPluginFactory({
+                        libraryDirectory: 'es',
+                        libraryName: 'antd-mobile',
+                        style: 'css'
+                      })
+                    ]
+                  })
                 },
               },
             ],

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Carousel from 'antd-mobile/lib/carousel';
+import { Carousel } from 'antd-mobile';
 import xzApi from '../../apis/xy';
 import './index.css';
 import TalkForm from '../../components/talkForm';

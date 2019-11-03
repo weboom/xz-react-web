@@ -1,11 +1,9 @@
 import * as React from 'react';
 import './index.css';
 import apis from '../../apis';
-import Button from 'antd-mobile/lib/button';
 import Navbar from '../../components/navbar';
 import AddShipping from '../../components/addAddress';
-import Toast from 'antd-mobile/lib/toast';
-import Modal from 'antd-mobile/lib/modal';
+import { Toast, Modal, Button } from 'antd-mobile';
 
 export default class Shipping extends React.Component {
   state = {

@@ -1,12 +1,10 @@
 import * as React from 'react';
 import './index.css';
-import InputItem from 'antd-mobile/lib/input-item';
-import Button from 'antd-mobile/lib/button';
 import xzApi from '../../apis/xy';
 import store from 'store';
 import {connect} from 'react-redux'
 import cookie from 'js-cookie';
-// import Modal from 'antd-mobile/lib/modal';
+import { InputItem, Button } from 'antd-mobile';
 
 const mapStateToProps = (state : any) => state;
 const mapDispatchToProps = {}

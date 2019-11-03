@@ -1,13 +1,10 @@
 import * as React from 'react';
 import './index.css';
-import Navbar from '../../components/navbar';
-import InputItem from 'antd-mobile/lib/input-item';
-import TextareaItem from 'antd-mobile/lib/textarea-item';
-import Button from 'antd-mobile/lib/button';
-import ImagePicker from 'antd-mobile/lib/image-picker';
-import xzApi from '../../apis/xy';
 import * as qiniu from 'qiniu-js';
+import Navbar from '../../components/navbar';
+import { ImagePicker, Button, TextareaItem, InputItem } from 'antd-mobile';
 import XzCategoryPicker from '../../components/xzCategoryPicker';
+import xzApi from '../../apis/xy';
 
 /**
  * @description 发布宝贝

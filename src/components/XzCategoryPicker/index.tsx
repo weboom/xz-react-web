@@ -1,8 +1,6 @@
 import * as React from 'react';
 import xzApi from '../../apis/xy';
-import Picker from 'antd-mobile/lib/picker';
-import List from 'antd-mobile/lib/list';
-// const classNames = require('classnames');
+import { Picker, List } from 'antd-mobile';
 
 interface Prop {
   categoryId?: string|number
