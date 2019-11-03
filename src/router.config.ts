@@ -19,77 +19,122 @@ export default [
   {
     path: '/',
     name: 'Welcome',
-    component: Welcome
+    component: Welcome,
+    meta: {
+      requireAuth: false
+    }
   },
   {
     path: '/account',
     name: 'Account',
-    component: Account
+    component: Account,
+    meta: {
+      requireAuth: false
+    }
   },
   {
     path: '/Shipping',
     name: 'Shipping',
-    component: Shipping
+    component: Shipping,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/item/:xzProductId',
     name: 'Item',
-    component: Item
+    component: Item,
+    meta: {
+      requireAuth: false
+    }
   },
   {
     path: '/Category',
     name: 'Category',
-    component: Category
+    component: Category,
+    meta: {
+      requireAuth: false
+    }
   },
   {
     path: '/Chat',
     name: 'Chat',
-    component: Chat
+    component: Chat,
+    meta: {
+      requireAuth: false
+    }
   },
   {
     path: '/Point',
     name: 'Point',
-    component: Point
+    component: Point,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/Collect',
     name: 'Collect',
-    component: Collect
+    component: Collect,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/Like',
     name: 'Like',
-    component: Like
+    component: Like,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/Follow',
     name: 'Follow',
-    component: Follow
+    component: Follow,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/AddItem',
     name: 'AddItem',
-    component: AddItem
+    component: AddItem,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/MyXzProduct',
     name: 'MyXzProduct',
-    component: MyXzProduct
+    component: MyXzProduct,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/Search',
     name: 'Search',
-    component: Search
+    component: Search,
+    meta: {
+      requireAuth: false
+    }
   },
   {
     path: '/chat/:chatId',
     name: 'ChatItem',
-    component: ChatItem
+    component: ChatItem,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/LoginPop',
     name: 'LoginPop',
-    component: LoginPop
+    component: LoginPop,
+    meta: {
+      requireAuth: false
+    }
   },
   {
     path: '/About',

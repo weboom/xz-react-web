@@ -24,15 +24,24 @@ ReactDOM.render(
     <BrowserRouter>
       <LoginPop />
       <Switch>
-        <Route path="/login" exact component={(props: any) => {
-          return <LoginPop visible={true} {...props} />
-        }} />
+        <Route
+          path="/login"
+          exact
+          component={(props: any) => {
+            return <LoginPop visible={true} {...props} />
+          }}
+        />
         {
           routes.map((item: any, index: any) => {
             return (
-              <Route key={index} path={item.path} exact render={(props: any) => {
-                return <item.component {...props} />
-              }} />
+              <Route
+                key={index}
+                path={item.path}
+                exact
+                render={(props: any) => {
+                  return <item.component {...props} />
+                }}
+              />
             )
           })
         }
