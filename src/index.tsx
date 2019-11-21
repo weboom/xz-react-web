@@ -13,8 +13,6 @@ import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
 import {createStore, applyMiddleware, compose} from 'redux'
 
-// import TestApp from './test/index';
-
 const store = createStore(reducers, compose(
   applyMiddleware(thunk), (window as any).devToolsExtension
   ? (window as any).devToolsExtension()

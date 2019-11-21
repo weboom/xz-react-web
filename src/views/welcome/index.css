@@ -1,10 +1,8 @@
 .page-welcome {
   width: 100%;
-
   .divider {
     height: 8px;
   }
-
   .mod-search {
     display: block;
     position: sticky;
@@ -14,7 +12,6 @@
     z-index: 15;
     background: #c82519;
   }
-
   .search-box {
     display: flex;
     align-items: center;
@@ -23,7 +20,6 @@
     line-height: 28px;
     padding: 8px 12px;
   }
-  
   .search-text {
     display: block;
     flex: 1;
@@ -35,61 +31,51 @@
     border-radius: 2px;
     color: #232326;
   }
-  
   .search-btn {
     font-size: 14px;
     color: #fff;
   }
-  
   .icon-menu {
     width: 20px;
     height: 18px;
   }
-  
   .mod-main-adver {
     position: relative;
     width: 100%;
     height: 150px;
   }
-  
   .slider-bg {
     position: absolute;
     top: -44px;
     width: 100%;
-    height: 120%;
-    border-bottom-left-radius: 150%;
-    border-bottom-right-radius: 150%;
-    background-image: linear-gradient(0deg,#f1503b,#c82519 50%);
+    height: calc(100% + 20px);
+    background: linear-gradient(0deg,#fff,#c82519 50%);
   }
-
   .slider-list {
     height: 139px;
-    padding: 0 12px;
     .am-carousel-wrap {
       margin-bottom: 4px;
     }
   }
-
+  .slider-slide {
+    padding: 0 12px;
+  }
   .slide-img {
     width: 100%;
     height: 139px;
     border-radius: 8px;
   }
-  
   .d-list {
     padding: 12px;
   }
-  
   .menu {
     display: flex;
     flex-wrap: wrap;
   }
-  
   .menu-item {
     width: 20%;
     text-align: center;
   }
-  
   .menu-name {
     display: block;
     color: #666;
@@ -97,20 +83,17 @@
     line-height: 18px;
     margin-top: 6px;
   }
-  
   .menu-icon {
     width: 40px;
     height: 40px;
     margin-top: 10px;
   }
-
   .mod-menu {
     margin: 0 12px;
     padding-bottom: 10px;
     background: #fff;
     border-radius: 6px;
   }
-
   .mod-cate {
     z-index: 20;
     position: sticky;
@@ -122,26 +105,27 @@
     background: #fff;
     -webkit-overflow-scrolling:touch;
   }
-
   .cate-list {
     width: 1060px;
   }
-
   .cate-item {
     float: left;
     height: 40px;
     line-height: 40px;
     padding: 0 12px;
-    transition: all 300ms;
     color: #666;
   }
-
   .cate-item-active {
     font-size: 16px;
     color: #333;
   }
-
-  .g-list {
-    /* padding-top: 4px; */
+  .am-carousel-wrap-dot > span {
+    width: 10px;
+    height: 4px;
+    border-radius: 0;
+    background: brown;
+  }
+  .am-carousel-wrap-dot-active > span {
+    background: cornflowerblue;
   }
 }
