@@ -18,7 +18,7 @@ export default class extends React.Component<Prop> {
 
   render () {
     const commentInfo = this.props.commentInfo;
-    const author = commentInfo.userInfo;
+    const author = commentInfo.userInfo || {};
     return (
       <div className="comment">
         <div className="comment-header">
