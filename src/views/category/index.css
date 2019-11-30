@@ -2,16 +2,44 @@
   .main {
     overflow: hidden;
     height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
   }
   .menu {
     overflow: scroll;
+    float: left;
     width: 90px;
     height: 100%;
     text-align: center;
     background: #fff;
   }
+  .body {
+    overflow: hidden;
+    flex: 1;
+    padding: 12px 0;
+    word-break: break-all;
+  }
   .menu-item {
     height: 50px;
     line-height: 50px;
+  }
+  .brand-item {
+    float: left;
+    width: 80px;
+    height: 41px;
+    line-height: 41px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #e6e0e0;
+    text-align: center;
+  }
+  .brand-logo {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+  .is-active {
+    color: sandybrown;
+    font-weight: bold;
   }
 }

@@ -1,0 +1,10 @@
+.zero-box {
+  padding-top: 50px;
+}
+
+.zero-box .zero-icon {
+  display: block;
+  width: 180px;
+  height: 139px;
+  margin: 0 auto;
+}
