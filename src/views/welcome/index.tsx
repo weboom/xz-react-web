@@ -14,7 +14,7 @@ export default class Welcome extends React.Component {
     imgHeight: 176,
     cMenu: [],
     curCategoryId: 1
-  }
+  };
 
   public componentDidMount () {
     setTimeout(() => {
@@ -32,7 +32,7 @@ export default class Welcome extends React.Component {
   handleClickXzProduct = (xzProductId: string) => {
     const history: any = (this.props as any).history;
     history.push(`/item/${xzProductId}`);
-  }
+  };
 
   public renderList = () => {
     const list: any[] = this.state.list;
@@ -45,7 +45,7 @@ export default class Welcome extends React.Component {
         })}
       </div>
     )
-  }
+  };
 
   public renderMenu = () => {
     return (
