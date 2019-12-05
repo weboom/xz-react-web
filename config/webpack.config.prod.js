@@ -15,6 +15,7 @@ const getClientEnvironment = require('./env');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const px2rem = require('postcss-px2rem');
+const tsImportPluginFactory = require('ts-import-plugin')
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -166,6 +167,15 @@ module.exports = {
                   // disable type checker - we will use it in fork plugin
                   transpileOnly: true,
                   configFile: paths.appTsProdConfig,
+                  getCustomTransformers: () => ({
+                    before: [
+                      tsImportPluginFactory({
+                        libraryDirectory: 'es',
+                        libraryName: 'antd-mobile',
+                        style: 'css'
+                      })
+                    ]
+                  })
                 },
               },
             ],
