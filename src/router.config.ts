@@ -14,6 +14,7 @@ import ChatItem from './views/chatItem';
 import LoginPop from './components/loginPop';
 import About from './views/about';
 import Shipping from './views/shipping';
+import XzProductList from './views/xzProductList';
 
 export default [
   {
@@ -40,6 +41,14 @@ export default [
       requireAuth: true
     }
   },
+	{
+		path: '/xzProduct',
+		name: 'XzProductList',
+		component: XzProductList,
+		meta: {
+		  requireAuth: false
+		}
+	},
   {
     path: '/item/:xzProductId',
     name: 'Item',

@@ -59,12 +59,20 @@ export default class extends React.Component {
         { 
           children.map((element: any) => {
             return (
-              <div className="brand-item" key={element.id}>
+              <div key={element.id}>
+								<div className="category-name">{element.name}</div>
+                <div className="child-list">
                 {
-                  element.logo ? <img className="brand-logo" src={element.logo} alt=""/> : (
-                    <span className="brand-logo">{element.name}</span>
-                  )
-                }
+                  (element.children || []).map((childElement: any) => {
+                    return (
+                      <div className="brand-item" key={childElement.id}>
+                        <img className="brand-logo" src={childElement.logo} alt=""/>
+                        <span className="brand-name">{childElement.name}</span>
+                      </div>
+                    )
+                  })
+                }   
+                </div>
               </div>
             )
           })

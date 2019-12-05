@@ -50,9 +50,4 @@ ReactDOM.render(
   document.getElementById('root') as HTMLElement
 );
 
-// ReactDOM.render(
-//   <TestApp />,
-//   document.getElementById('root') as HTMLElement
-// );
-
 registerServiceWorker();

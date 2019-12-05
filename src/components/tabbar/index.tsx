@@ -78,9 +78,7 @@ export default class extends React.Component<Props, object> {
                });
                (this.props as any).history.push('/');
              }}
-           >
-             {this.renderContent('首页')}
-           </TabBar.Item>
+           />
            <TabBar.Item
              icon={
                <div style={{
@@ -105,9 +103,7 @@ export default class extends React.Component<Props, object> {
                });
                (this.props as any).history.push('/category');
              }}
-           >
-             {this.renderContent('分类')}
-           </TabBar.Item>
+           />
            <TabBar.Item
              icon={
                <div style={{
@@ -133,9 +129,7 @@ export default class extends React.Component<Props, object> {
                });
                (this.props as any).history.push('/chat');
              }}
-           >
-             {this.renderContent('聊天')}
-           </TabBar.Item>
+           />
            <TabBar.Item
              icon={{ uri: 'https:zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
              selectedIcon={{ uri: 'https:zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
@@ -148,9 +142,7 @@ export default class extends React.Component<Props, object> {
                });
                (this.props as any).history.push('/account');
              }}
-           >
-             {this.renderContent('我的')}
-           </TabBar.Item>
+           />
          </TabBar>
       </div>
     )
