@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { TabBar } from 'antd-mobile';
 import './index.css';
+import 'antd-mobile/lib/tab-bar/style/index.less';
 
 export interface Props {
   activeKey: string;
