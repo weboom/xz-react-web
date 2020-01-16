@@ -1,10 +1,9 @@
 import store from 'store';
 import api from '../apis/xy';
 
-const ERROR = Symbol();
-const LOAD_USER_DATA = Symbol();
-const SHOW_LOGIN = Symbol();
-const CLOSE_LOGIN = Symbol();
+const USER_GETINFO = Symbol(); // 获取用户信息
+const USER_SHOW_LOGIN = Symbol(); // 显示登录
+const USER_CLOSE_LOGIN = Symbol(); // 关闭登录
 
 let userInfo = store.get('userInfo');
 try {
@@ -24,7 +23,7 @@ const initState = {
 // reducer
 export function user(state = initState, action: any) {
   switch (action.type) {
-    case LOAD_USER_DATA:
+    case USER_GETINFO:
       const data = {
         ...state,
         ...action.payload.userInfo
@@ -33,12 +32,12 @@ export function user(state = initState, action: any) {
       return {
         ...data
       };
-    case SHOW_LOGIN: 
+    case USER_SHOW_LOGIN: 
       return {
         ...state,
         showLogin: true
       }
-    case CLOSE_LOGIN:
+    case USER_CLOSE_LOGIN:
       return {
         ...state,
         showLogin: false
@@ -51,11 +50,9 @@ export function user(state = initState, action: any) {
 // gen action
 export function login(params: any) {
   return async (dispatch: any) => {
-    const ret: any = await api.login(params);
-    if (ret.code === '0') {
-      dispatch({type: LOAD_USER_DATA, payload: ret.data})
-    } else {
-      dispatch({type: ERROR, payload: ret.msg})
+    const res: any = await api.login(params);
+    if (res && res.success) {
+      dispatch({type: USER_GETINFO, payload: res.data})
     }
   }
 }

@@ -2,12 +2,27 @@ import * as React from 'react';
 import './index.css';
 import { Icon, List, Toast } from 'antd-mobile';
 import Tabbar from '../../components/tabbar';
-import xzApi from '../../apis/xy';
+import api from '../../apis/xy';
 import * as store from 'store';
+import { connect } from 'react-redux'
+import { login } from '../../redux/user.redux'
+
+const mapStateToProps = (state: any) => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = (
+  dispatch: any,
+  ownProps: any
+) => {
+  return { login };
+}
 
 const Item = List.Item;
 
-export default class extends React.Component {
+class Account extends React.Component {
   state = {
     userInfo: null,
     checkState: false,
@@ -112,7 +127,7 @@ export default class extends React.Component {
   }
 
   getTotalInfo = () => {
-    xzApi.getUserTotalInfo().then((res: any) => {
+    api.getUserTotalInfo().then((res: any) => {
       if (res && res.success) {
         this.setState({
           totalInfo: res.data
@@ -127,36 +142,30 @@ export default class extends React.Component {
   }
 
   public componentWillMount() {
+    console.log(this.props)
     this.initUserInfo();
     this.getCheckin();
     this.getTotalInfo();
+    console.log(this.props);
+    (this.props as any).login();
   }
 
-  public getCheckin = () => {
-    const onSuccss = (res: any) => {
-      if (res && res.success) {
-        this.setState({
-          checkState: res.data.status === 1
-        })
-      }
+  public getCheckin = async () => {
+    const res: any = await api.getCheckinStatus()
+    if (res && res.success) {
+      this.setState({ checkState: res.data.status === 1 })
     }
-    xzApi.getCheckinStatus().then(onSuccss)
   }
 
   public doCheckin = async() => {
-    const callback = (res: any) => {
-      if (res && res.success) {
-        Toast.success('签到成功');
-        this.setState({
-          checkState: true
-        })
-        this.getTotalInfo();
-      } else {
-        Toast.fail(res.errMsg);
-      }
+    const res: any = await api.checkin();
+    if (res && res.success) {
+      Toast.success('签到成功');
+      this.setState({ checkState: true })
+      this.getTotalInfo();
+    } else {
+      Toast.fail(res.errMsg);
     }
-    const ret = await xzApi.checkin();
-    callback(ret);
   }
 
   public handleClickCheckin = () => {
@@ -177,3 +186,8 @@ export default class extends React.Component {
     )
   }
 }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Account)
