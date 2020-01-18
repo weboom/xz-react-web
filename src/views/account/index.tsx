@@ -3,9 +3,13 @@ import './index.css';
 import { Icon, List, Toast } from 'antd-mobile';
 import Tabbar from '../../components/tabbar';
 import api from '../../apis/xy';
-import * as store from 'store';
 import { connect } from 'react-redux'
-import { login } from '../../redux/user.redux'
+import {
+  login,
+  getUserAmount,
+  getCheckinState,
+  doCheckin
+} from '../../redux/user.redux'
 
 const mapStateToProps = (state: any) => {
   return {
@@ -13,30 +17,32 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-const mapDispatchToProps = (
-  dispatch: any,
-  ownProps: any
-) => {
-  return { login };
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    login: () => {
+      dispatch(login({
+        mobile: 13249064450,
+        password: 123456
+      }))
+    },
+    getCheckinState: () => dispatch(getCheckinState()),
+    getAmountInfo: () => dispatch(getUserAmount()),
+    doCheckin: () => dispatch(doCheckin()),
+  };
 }
 
 const Item = List.Item;
 
 class Account extends React.Component {
   state = {
-    userInfo: null,
-    checkState: false,
-    totalInfo: {
-      followNum: 0,
-      likeNum: 0,
-      collectNum: 0,
-      pointNum: 0
-    }
+    checkState: false
   }
 
   public renderProfile () {
-    const userInfo: any = this.state.userInfo;
-    const { checkState, totalInfo } = this.state;
+    const props: any = this.props;
+    const userInfo: any = props.user.userInfo;
+    const amountInfo: any = props.user.amountInfo;
+    const checkState: boolean = props.user.checkinState;
 
     return (
       <div className="mod-banner">
@@ -68,32 +74,36 @@ class Account extends React.Component {
             )
           }
         </div>
-        <div className="card-menu">
-          <div className="" onClick={() => {
-            this.switchUrl('/follow')
-          }}>
-            <i className="icon iconfont icon-guanzhu" />
-            <span className="text">关注({totalInfo.followNum})</span>
+        {
+          amountInfo ? (
+            <div className="card-menu">
+            <div className="" onClick={() => {
+              this.switchUrl('/follow')
+            }}>
+              <i className="icon iconfont icon-guanzhu" />
+              <span className="text">关注({amountInfo.followNum})</span>
+            </div>
+            <div className="" onClick={() => {
+              this.switchUrl('/collect')
+            }}>
+              <i className="icon iconfont icon-shoucang" />
+              <span className="text">收藏({amountInfo.collectNum})</span>
+            </div>
+            <div className="" onClick={() => {
+              this.switchUrl('/like')
+            }}>
+              <i className="icon iconfont icon-zan" />
+              <span className="text">点赞({amountInfo.likeNum})</span>
+            </div>
+            <div className="" onClick={() => {
+              this.switchUrl('/point')
+            }}>
+              <i className="icon iconfont icon-diamond" />
+              <span className="text">积分({amountInfo.pointNum})</span>
+            </div>
           </div>
-          <div className="" onClick={() => {
-            this.switchUrl('/collect')
-          }}>
-            <i className="icon iconfont icon-shoucang" />
-            <span className="text">收藏({totalInfo.collectNum})</span>
-          </div>
-          <div className="" onClick={() => {
-            this.switchUrl('/like')
-          }}>
-            <i className="icon iconfont icon-zan" />
-            <span className="text">点赞({totalInfo.likeNum})</span>
-          </div>
-          <div className="" onClick={() => {
-            this.switchUrl('/point')
-          }}>
-            <i className="icon iconfont icon-diamond" />
-            <span className="text">积分({totalInfo.pointNum})</span>
-          </div>
-        </div>
+          ) : null
+        }
       </div>
     )
   }
@@ -119,60 +129,35 @@ class Account extends React.Component {
     )
   }
 
-  public initUserInfo = () => {
-    const userInfo: any = store.get('userInfo');
-    this.setState({
-      userInfo
-    })
-  }
-
-  getTotalInfo = () => {
-    api.getUserTotalInfo().then((res: any) => {
-      if (res && res.success) {
-        this.setState({
-          totalInfo: res.data
-        })
-      }
-    })
-  }
-
-  public switchUrl = (url: string) => {
+  switchUrl = (url: string) => {
     const history = (this.props as any).history;
     history.push(url);
   }
 
-  public componentWillMount() {
-    console.log(this.props)
-    this.initUserInfo();
-    this.getCheckin();
-    this.getTotalInfo();
-    console.log(this.props);
-    (this.props as any).login();
-  }
-
-  public getCheckin = async () => {
-    const res: any = await api.getCheckinStatus()
-    if (res && res.success) {
-      this.setState({ checkState: res.data.status === 1 })
+  componentDidMount() {
+    const props: any = this.props
+    if (props.user.userInfo) {
+      if (!props.user.accountInfo) { props.getAmountInfo() }
+      if(!props.user.checkinState) { props.getCheckinState() }
     }
   }
 
-  public doCheckin = async() => {
+  doCheckin = async() => {
     const res: any = await api.checkin();
     if (res && res.success) {
       Toast.success('签到成功');
       this.setState({ checkState: true })
-      this.getTotalInfo();
     } else {
       Toast.fail(res.errMsg);
     }
   }
 
-  public handleClickCheckin = () => {
-    if (!this.state.checkState) {
+  handleClickCheckin = () => {
+    const props: any = this.props;
+    if (!props.user.checkinState) {
       this.doCheckin();
     } else {
-      (this.props as any).history.push('/point')
+      props.history.push('/point')
     }
   }
 
@@ -187,7 +172,4 @@ class Account extends React.Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Account)
+export default connect(mapStateToProps, mapDispatchToProps)(Account)
