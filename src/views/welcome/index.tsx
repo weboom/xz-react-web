@@ -1,8 +1,7 @@
 import * as React from 'react';
-import xzApi from '../../apis/xy';
+import api from '../../apis/xy';
 import './index.css';
 import { Carousel } from 'antd-mobile';
-import { menuList, sliderList } from './menu.config';
 import Tabbar from '../../components/tabbar';
 import XzProductList from '../../components/xzProductList';
 import XzCategoryList from '../../components/xzCategoryList';
@@ -10,22 +9,32 @@ import XzCategoryList from '../../components/xzCategoryList';
 export default class Welcome extends React.Component {
   public state = {
     list: [],
-    data: ['1', '2', '3', '4'],
     imgHeight: 176,
     cMenu: [],
-    curCategoryId: 1
+    curCategoryId: 1,
+    slideList: [],
+    menuList: []
   };
 
   public componentDidMount () {
-    setTimeout(() => {
-      this.setState({
-        data: sliderList
-      });
-    }, 100);
-    xzApi.getXzCategorytList().then(res => {
+    api.getXzCategorytList().then(res => {
       this.setState({
         cMenu: res.data.list
       })
+    })
+    api.getMainAdvert().then((res: any) => {
+      if (res && res.success) {
+        this.setState({
+          slideList: res.data.list
+        })
+      }
+    })
+    api.getMainMenu().then((res: any) => {
+      if (res && res.success) {
+        this.setState({
+          menuList: res.data.list
+        })
+      }
     })
   }
 
@@ -52,7 +61,7 @@ export default class Welcome extends React.Component {
       <div className="mod-menu">
         <div className="menu">
           {
-            menuList.map((item, index) => {
+            this.state.menuList.map((item: any, index) => {
               return (
                 <div className="menu-item" key={index} onClick={() => {
                   if (item.url) {
@@ -90,9 +99,9 @@ export default class Welcome extends React.Component {
         <div className="slider-bg" />
         <div className="slider-list">
           <Carousel autoplay={false} infinite cellSpacing={10}>
-            {this.state.data.map(val => (
-              <a key={val}>
-                <img className="slide-img" src={val}/>
+            {this.state.slideList.map((val: any) => (
+              <a key={val.img} href={val.url}>
+                <img className="slide-img" src={val.img}/>
               </a>
             ))}
           </Carousel>

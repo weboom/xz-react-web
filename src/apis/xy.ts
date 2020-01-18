@@ -258,5 +258,19 @@ export default {
    */
   getXzProductByKey({ key }: any) {
     return http.get(`${host}/xzProduct/search?keyword=${key}`)
+  },
+
+  /**
+   * @description 获取首页广告配置
+   */
+  getMainAdvert() {
+    return http.get(`${host}/home/mainAdvert`)
+  },
+
+  /**
+   * @description 获取首页主菜单配置
+   */
+  getMainMenu() {
+    return http.get(`${host}/home/mainMenu`)
   }
 }
