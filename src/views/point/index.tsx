@@ -1,34 +1,48 @@
 import * as React from 'react';
 import './index.css';
-import Navbar from '../../components/navbar';
 import xzApi from '../../apis';
-import { Toast } from 'antd-mobile';
+import Navbar from '../../components/navbar';
+import ReactLoading from "react-loading";
+import InfiniteScroll from "react-infinite-scroll-component";
 
-/**
- * @description 我的积分
- * @author Gaollard
- */
-export default class extends React.Component {
+interface Props {
+  history: any
+}
+
+export default class extends React.Component<Props> {
   public state = {
-    list: []
+    list: [],
+    pageIndex: 0,
+    pageSize: 20,
+    hasMore: true,
+    loading: false
   }
 
-  public getPointList = async() => {
-    Toast.loading('加载中', 0);
-    const callback = (res: any) => {
-      if (res && res.success) {
-        setTimeout(() => {
-          Toast.hide();
-          this.setState({
-            list: res.data.list
-          })
-        }, 300)
-      }
+  _getDataList = async (isInit: boolean = true) => {
+    const pageIndex = isInit ? this.state.pageIndex : ++this.state.pageIndex
+    const res: any = await xzApi.getPointList({
+      pageIndex,
+      pageSize: this.state.pageSize,
+    })
+    if (res && res.success) {
+      const list = isInit ? res.data.list : this.state.list.concat(res.data.list);
+      this.setState({
+        list,
+        pageIndex,
+        hasMore: list.length < res.data.total
+      })
     }
-    xzApi.getPointList().then(callback)
   }
 
-  public renderList = () => {
+  _loadMore = () => {
+    this._getDataList(false)
+  }
+
+  componentWillMount () {
+    this._getDataList();
+  }
+
+  renderList = () => {
     const list: any[] = this.state.list;
     return (
       <div className="list-wrap">
@@ -49,18 +63,28 @@ export default class extends React.Component {
     )
   }
 
-  componentWillMount () {
-    this.getPointList();
+  _renderLoading = () => {
+    return (
+      <div className="loading">
+        <ReactLoading height={24} width={24} className="svg" type="spin" color="#333"/>
+        <span>加载中...</span>
+      </div>
+    )
   }
 
   render () {
     return (
       <div className="page-point">
-        <Navbar title="我的积分" onLeftClick={() => {
-          (this.props as any).history.goBack();
-        }}/>
+        <Navbar title="我的积分" onLeftClick={this.props.history.goBack}/>
         <div className="page-body">
-          { this.renderList() }
+          <InfiniteScroll
+            dataLength={this.state.list.length}
+            next={this._loadMore}
+            hasMore={this.state.hasMore}
+            loader={this._renderLoading()}
+          >
+            { this.renderList() }
+          </InfiniteScroll>
         </div>
       </div>
     )

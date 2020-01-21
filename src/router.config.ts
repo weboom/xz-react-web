@@ -15,6 +15,7 @@ import LoginPop from './components/loginPop';
 import About from './views/about';
 import Shipping from './views/shipping';
 import XzProductList from './views/xzProductList';
+import ListView from './views/list-view'
 
 export default [
   {
@@ -149,5 +150,10 @@ export default [
     path: '/About',
     name: 'About',
     component: About
+  },
+  {
+    path: '/list-view',
+    name: 'list-view',
+    component: ListView
   }
 ]

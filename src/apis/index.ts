@@ -54,8 +54,10 @@ export default {
   },
 
   // 查询用户积分
-  getPointList () {
-    return http.get(`${host}/point/list`)
+  getPointList (params: any) {
+    return http.get(`${host}/point/list`, {
+      params
+    })
   },
 
   // 获取收货地址
