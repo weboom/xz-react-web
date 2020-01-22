@@ -2,7 +2,7 @@ import * as React from 'react';
 import './index.css';
 import xzApi from '../../apis';
 import Navbar from '../../components/navbar';
-import ReactLoading from "react-loading";
+import InlineLoading from '../../components/inline-loading'
 import InfiniteScroll from "react-infinite-scroll-component";
 
 interface Props {
@@ -63,15 +63,6 @@ export default class extends React.Component<Props> {
     )
   }
 
-  _renderLoading = () => {
-    return (
-      <div className="loading">
-        <ReactLoading height={24} width={24} className="svg" type="spin" color="#333"/>
-        <span>加载中...</span>
-      </div>
-    )
-  }
-
   render () {
     return (
       <div className="page-point">
@@ -81,7 +72,7 @@ export default class extends React.Component<Props> {
             dataLength={this.state.list.length}
             next={this._loadMore}
             hasMore={this.state.hasMore}
-            loader={this._renderLoading()}
+            loader={<InlineLoading />}
           >
             { this.renderList() }
           </InfiniteScroll>

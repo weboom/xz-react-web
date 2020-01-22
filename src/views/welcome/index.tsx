@@ -1,6 +1,6 @@
 import * as React from 'react';
-import api from '../../apis/xy';
 import './index.css';
+import api from '../../apis/xy';
 import { Carousel } from 'antd-mobile';
 import Tabbar from '../../components/tabbar';
 import XzProductList from '../../components/xzProductList';
