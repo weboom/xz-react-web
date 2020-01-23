@@ -10,39 +10,72 @@ interface Prop {
 export default class extends React.Component<Prop> {
   state = {
     cMenu: [],
-    colorValue: []
+    value: [],
+    options: []
   }
 
-  public getXzCategorytList = () => {
-    const colorValue: any[] = this.state.colorValue;
-    xzApi.getXzCategorytList().then((res: any) => {
+  _getXzCategorytList = async () => {
+    const res: any = await xzApi.getXzCategorytList()
+    if (res && res.success) {
       const cMenu = res.data.list;
-      cMenu.forEach((item: any) => {
-        item.label = item.name
-        item.value = item.id
-      })
-      colorValue[0] = cMenu[0].id
-      this.setState({
-        cMenu,
-        colorValue
-      })
-      this.emitValue();
-    })
+      const rawData = (list: any) => {
+        list.forEach((item: any) => {
+          item.label = item.name
+          item.value = item.id
+          if (item.children && item.children.length) {
+            rawData(item.children)
+          }
+        })
+      }
+      rawData(cMenu)
+      this.setState({ cMenu })
+    }
   }
 
   emitValue = () => {
-    this.props.onClickItem(this.state.colorValue[0]);
+    // this.props.onClickItem(this.state.value[0]);
   }
 
   componentDidMount () {
-    this.getXzCategorytList();
+    this._getXzCategorytList();
   }
 
-  onChangeColor = (color: any) => {
+  onChangeValue = (value: any) => {
     this.setState({
-      colorValue: color,
-    }, this.emitValue);
+      value,
+      options: this.getOptions(value)
+    });
   };
+
+  getOption = (value: any, list: any) => {
+    let res = null;
+    const find = (array: any) => {
+      array.forEach((element: any) => {
+        if (element.value === value) {
+          res = element;
+        } else {
+          if (element.children && element.children.length) {
+            find(element.children)
+          }
+        }
+      });
+    }
+    find(list)
+    return res
+  }
+
+  // 通过值获取选择的选项
+  getOptions = (value: any) => {
+    const options: any[] = [];
+    value.forEach((item: any, index: number) => {
+      if (index === 0) {
+        options[index] = this.getOption(item, this.state.cMenu)
+      } else {
+        options[index] = this.getOption(item, options[index-1].children)
+      }
+    })
+    return options
+  }
 
   public render = () => {
     const cMenu: any[] = this.state.cMenu;
@@ -50,14 +83,12 @@ export default class extends React.Component<Prop> {
       <div className="cate-list">
         <Picker
           data={cMenu}
-          value={this.state.colorValue}
-          cols={1}
-          onChange={this.onChangeColor}
+          value={this.state.value}
+          cols={3}
+          onChange={this.onChangeValue}
         >
           <List.Item arrow="horizontal">
-            <span style={{
-              color: '#999'
-            }}>选择分类(有助于买家快速筛选)</span>
+            <span style={{color: '#999'}}>选择分类(有助于买家快速筛选)</span>
           </List.Item>
         </Picker>
       </div>
