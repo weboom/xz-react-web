@@ -32,19 +32,17 @@ export default class extends React.Component<Prop> {
     }
   }
 
-  emitValue = () => {
-    // this.props.onClickItem(this.state.value[0]);
-  }
-
   componentDidMount () {
     this._getXzCategorytList();
   }
 
   onChangeValue = (value: any) => {
+    const options: any = this.getOptions(value)
     this.setState({
       value,
-      options: this.getOptions(value)
+      options,
     });
+    this.props.onClickItem(options);
   };
 
   getOption = (value: any, list: any) => {

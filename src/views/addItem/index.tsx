@@ -17,6 +17,11 @@ export default class extends React.Component {
     desc: '',
     category: '',
     categoryId: '',
+    categoryName: '',
+    brandId: '',
+    brandName: '',
+    skuId: '',
+    skuName: '',
     address: '',
     depreciation: '',
     token: '',
@@ -168,12 +173,17 @@ export default class extends React.Component {
           selectable={files.length < 7}
           multiple={this.state.multiple}
         />
-        <XzCategoryPicker onClickItem={(categoryId) => {
-          console.log(categoryId);
-            this.setState({
-              categoryId
-            })
-          }}/>
+        <XzCategoryPicker onClickItem={(options: any) => {
+          console.log(options)
+          this.setState({
+            categoryId: options[0].value,
+            categoryName: options[0].label,
+            brandId: options[1] ? (options[1].value) : '',
+            brandName: options[1] ? (options[1].label) : '',
+            skuId: options[2] ? (options[2].value) : '',
+            skuName: options[2] ? (options[2].label) : '',
+          })
+        }}/>
         <div className="u-footer">
           <Button type="primary" onClick={ this.handleSave }>提交</Button>
         </div>
