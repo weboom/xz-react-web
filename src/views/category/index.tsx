@@ -32,9 +32,7 @@ export default class extends React.Component {
             }
             return (
               <div className={cls} key={item.id} onClick={()=> {
-                this.setState({
-                  curCategory: item.id
-                })
+                this.setState({ curCategory: item.id })
               }}>
                 { item.name }
               </div>
@@ -54,29 +52,31 @@ export default class extends React.Component {
       </div>
     }
     const children = cMenu[findIndex].children;
+    const childrenView =  children.map((element: any) => {
+      return (
+        <div key={element.id}>
+          <div className="category-name">{element.name}</div>
+          <div className="child-list">
+          {
+            (element.children || []).map((childElement: any) => {
+              return (
+                <div className="brand-item" key={childElement.id} onClick={() => {
+                  (this.props as any).history.push(`/xzProduct?skuId=${childElement.id}`)
+                }}>
+                  <img className="brand-logo" src={childElement.logo} alt=""/>
+                  <span className="brand-name">{childElement.name}</span>
+                </div>
+              )
+            })
+          }   
+          </div>
+        </div>
+      )
+    })
+
     return (
       <div className="body">
-        { 
-          children.map((element: any) => {
-            return (
-              <div key={element.id}>
-								<div className="category-name">{element.name}</div>
-                <div className="child-list">
-                {
-                  (element.children || []).map((childElement: any) => {
-                    return (
-                      <div className="brand-item" key={childElement.id}>
-                        <img className="brand-logo" src={childElement.logo} alt=""/>
-                        <span className="brand-name">{childElement.name}</span>
-                      </div>
-                    )
-                  })
-                }   
-                </div>
-              </div>
-            )
-          })
-        }
+        { childrenView }
       </div>
     )
   }

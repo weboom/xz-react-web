@@ -1,4 +1,16 @@
 .page-xzProductList {
+  .filter-pop {
+    position: fixed;
+    top: 86px;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    background: rgba(0,0,0,.3);
+    .am-list {
+      background-color: #fff;
+    }
+  }
+
 	.search-box {
     display: flex;
     align-items: center;
@@ -7,6 +19,7 @@
     border-bottom: 1px solid #f7f7f7;
     .back-btn {
       padding-right: 4px;
+      padding-left: 6px;
     }
     .input-box {
       display: flex;
@@ -52,6 +65,7 @@
     display: flex;
     overflow: hidden;
     background: #fff;
+    border-bottom: 1px solid #f5f5f5;
   }
 
   .filter-item {
@@ -62,5 +76,64 @@
     padding: 0 12px;
     color: #666;
     text-align: center;
+  }
+
+  .p-item {
+    overflow: hidden;
+    padding: 10px 12px;
+    background: #fff;
+    margin-bottom: 1px;
+    .p-icon {
+      display: inline-block;
+      width: 24px;
+      height: 12px;
+      margin-right: 6px;
+    }
+  }
+
+  .p-main {
+    float: left;
+  }
+
+  .p-item-name {
+    word-break: break-all;
+    margin-top: 12px;
+    color: #333;
+    line-height: 1.36;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .p-item-price {
+    color: #e93b3d;
+  }
+
+  .p-uinfo {
+    display: flex;
+    align-items: center;
+    margin-top: 18px;
+    font-size: 12px;
+    color: #999;
+    .u-avatar {
+      border-radius: 4px;
+      width: 16px;
+      height: 16px;
+      margin-right: 4px;
+    }
+  }
+
+  .p-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 120px;
+    height: 120px;
+    margin-right: 10px;
+    img {
+      display: block;
+      width: 80%;
+      height: 80%;
+    }
   }
 }
