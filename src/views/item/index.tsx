@@ -26,6 +26,13 @@ export default class extends React.Component {
   public renderBanner = () => {
     const itemInfo: any = this.state.itemInfo;
     const imgs: any[] = itemInfo.imgs;
+    console.log(imgs)
+    if (imgs.length === 1) {
+      return <div
+      className="banner-slide"
+      style={{ backgroundImage: `url(${imgs[0]})`}}
+    />
+    }
     return (
       <Carousel autoplay={false} infinite>
         {imgs.map(val => (

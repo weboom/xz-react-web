@@ -36,9 +36,17 @@
 
   .banner-slide {
     width: 100%;
-    height: 325px;
-    background-size: 100%;
+    height: 300px;
+    background-size: cover;
     background-position: center;
+  }
+
+  .am-carousel-wrap {
+    margin-bottom: 8px;
+  }
+
+  .am-carousel-wrap-dot-active > span {
+    background: cornflowerblue;
   }
 
   .mod-author {
