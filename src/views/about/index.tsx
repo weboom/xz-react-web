@@ -1,12 +1,12 @@
 import * as React from 'react';
 import './index.css';
-import { NavBar } from 'antd-mobile';
+import Navbar from '../../components/navbar';
 
 export default class extends React.Component {
   render () {
     return (
       <div className="page-about">
-         <NavBar title="关于我们" onLeftClick={() => {
+         <Navbar title="关于我们" onLeftClick={() => {
           (this.props as any).history.goBack();
         }}/>
         <div className="page__body">

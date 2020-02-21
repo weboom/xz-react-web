@@ -4,4 +4,11 @@
   left: 0;
   width: 100%;
   height: 50px;
+  .iconfont {
+    font-size: 18px;
+  }
+  .am-tab-bar-tab-title {
+    font-size: 12px;
+    transform: scale(0.8);
+  }
 }

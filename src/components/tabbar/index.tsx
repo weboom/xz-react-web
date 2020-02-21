@@ -59,43 +59,19 @@ export default class extends React.Component<Props, object> {
            <TabBar.Item
              title="首页"
              key="首页"
-             icon={<div style={{
-               width: '22px',
-               height: '22px',
-               background: 'url(https:zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
-             />
-             }
-             selectedIcon={<div style={{
-               width: '22px',
-               height: '22px',
-               background: 'url(https:zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
-             />
-             }
+             icon={<i className="iconfont icon-home-o"/>}
+             selectedIcon={<i className="iconfont icon-home"/>}
              selected={this.state.selectedTab === 'welcome'}
              onPress={() => {
-               this.setState({
-                 selectedTab: 'welcome',
-               });
+               this.setState({ selectedTab: 'welcome' });
                (this.props as any).history.push('/');
              }}
            />
            <TabBar.Item
-             icon={
-               <div style={{
-                 width: '22px',
-                 height: '22px',
-                 background: 'url(https:gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat' }}
-               />
-             }
-             selectedIcon={
-               <div style={{
-                 width: '22px',
-                 height: '22px',
-                 background: 'url(https:gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
-               />
-             }
              title="分类"
              key="分类"
+             icon={<i className="iconfont icon-category-search-o"/>}
+             selectedIcon={<i className="iconfont icon-category-search"/>}
              selected={this.state.selectedTab === 'category'}
              onPress={() => {
                this.setState({
@@ -105,22 +81,10 @@ export default class extends React.Component<Props, object> {
              }}
            />
            <TabBar.Item
-             icon={
-               <div style={{
-                 width: '22px',
-                 height: '22px',
-                 background: 'url(https:zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat' }}
-               />
-             }
-             selectedIcon={
-               <div style={{
-                 width: '22px',
-                 height: '22px',
-                 background: 'url(https:zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
-               />
-             }
-             title="聊天"
-             key="聊天"
+          icon={<i className="iconfont icon-message-o"/>}
+          selectedIcon={<i className="iconfont icon-message"/>}
+             title="消息"
+             key="消息"
              dot
              selected={this.state.selectedTab === 'chat'}
              onPress={() => {
@@ -131,8 +95,8 @@ export default class extends React.Component<Props, object> {
              }}
            />
            <TabBar.Item
-             icon={{ uri: 'https:zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-             selectedIcon={{ uri: 'https:zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
+            icon={<i className="iconfont icon-user"/>}
+            selectedIcon={<i className="iconfont icon-user-fill"/>}
              title="我的"
              key="我的"
              selected={this.state.selectedTab === 'account'}

@@ -3,6 +3,7 @@ import './index.css';
 import xzApi from '../../apis/xy';
 import Tabbar from '../../components/tabbar';
 import ZeroBox from '../../components/zero-box';
+import classNames from 'classnames'
 
 export default class extends React.Component {
   state = {
@@ -59,11 +60,17 @@ export default class extends React.Component {
           <div className="child-list">
           {
             (element.children || []).map((childElement: any) => {
+              const cls = classNames('brand-logo', {
+                'brand-logo--gray': !childElement.logo
+              });
               return (
                 <div className="brand-item" key={childElement.id} onClick={() => {
                   (this.props as any).history.push(`/xzProduct?skuId=${childElement.id}`)
                 }}>
-                  <img className="brand-logo" src={childElement.logo} alt=""/>
+                  <div className={cls} style={{
+                    backgroundImage: `url(${childElement.logo})`
+                  }}/>
+                  {/* <img className="brand-logo" src={childElement.logo} alt=""/> */}
                   <span className="brand-name">{childElement.name}</span>
                 </div>
               )

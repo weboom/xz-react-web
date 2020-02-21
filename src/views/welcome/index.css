@@ -1,5 +1,14 @@
 .page-welcome {
   width: 100%;
+  .mod-cate-box {
+    overflow: hidden;
+    height: 40px;
+    margin-top: 8px;
+    z-index: 20;
+    position: sticky;
+    left: 0;
+    top: 44px;
+  }
   .divider {
     height: 8px;
   }
@@ -95,14 +104,10 @@
     border-radius: 6px;
   }
   .mod-cate {
-    z-index: 20;
-    position: sticky;
-    left: 0;
-    top: 44px;
     overflow: scroll;
     width: 100%;
-    margin-top: 8px;
     background: #fff;
+    padding-bottom: 15px;
     -webkit-overflow-scrolling:touch;
   }
   .cate-list {

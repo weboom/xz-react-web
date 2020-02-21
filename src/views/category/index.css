@@ -27,18 +27,25 @@
     float: left;
     width: 80px;
     margin-left: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 38px;
     text-align: center;
   }
   .brand-name {
     display: block;
     font-size: 12px;
     margin-top: 6px;
+    color: #666;
   }
   .brand-logo {
     display: inline-block;
     width: 60px;
     height: 60px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .brand-logo--gray {
+    background-color: rgba(0, 0, 0, .1);
   }
   .is-active {
     color: sandybrown;
@@ -49,6 +56,10 @@
     overflow: hidden;
   }
 	.category-name {
-		padding: 16px 12px;
+    padding: 16px 12px;
+    padding-bottom: 30px;
+    font-size: 14px;
+    color: #6f6d6f;
+    text-align: center;
 	}
 }
