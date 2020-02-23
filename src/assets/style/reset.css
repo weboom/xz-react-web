@@ -6,12 +6,15 @@
 body {
   font-size: 14px;
   background: #f6f6f6;
-  .am-list-item .am-list-line .am-list-content {
-    font-size: 15px;
-  }
   .am-button-primary {
     border-color: #ff5b05;
     background-color: #ff5b05;
+  }
+  .am-list-item .am-list-line .am-list-content,
+  .am-list-item .am-list-line .am-list-extra,
+  .am-textarea-control textarea,
+  .am-list-item .am-input-control input {
+    font-size: 14px;
   }
 }
 

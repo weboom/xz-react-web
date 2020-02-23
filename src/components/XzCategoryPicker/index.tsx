@@ -4,6 +4,7 @@ import { Picker, List } from 'antd-mobile';
 
 interface Prop {
   categoryId?: string|number
+  title?: string,
   onClickItem(categoryId: string): any
 }
 
@@ -86,7 +87,7 @@ export default class extends React.Component<Prop> {
           onChange={this.onChangeValue}
         >
           <List.Item arrow="horizontal">
-            <span style={{color: '#999'}}>选择分类(有助于买家快速筛选)</span>
+            <span style={{color: '#999'}}> { this.props.title || '选择分类(有助于买家快速筛选)'}</span>
           </List.Item>
         </Picker>
       </div>

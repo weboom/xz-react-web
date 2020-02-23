@@ -124,6 +124,9 @@ class Account extends React.Component {
           <Item arrow="horizontal" onClick={() => {
             this.switchUrl('/about');
           }}>关于我们</Item>
+          <Item arrow="horizontal" onClick={() => {
+            this.switchUrl('/feedback');
+          }}>意见反馈</Item>
         </List>
       </div>
     )

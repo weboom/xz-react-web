@@ -16,12 +16,21 @@ import About from './views/about';
 import Shipping from './views/shipping';
 import XzProductList from './views/xzProductList';
 import ListView from './views/list-view'
+import Feedback from './views/feedback'
 
 export default [
   {
     path: '/',
     name: 'Welcome',
     component: Welcome,
+    meta: {
+      requireAuth: false
+    }
+  },
+  {
+    path: '/Feedback',
+    name: 'Feedback',
+    component: Feedback,
     meta: {
       requireAuth: false
     }
